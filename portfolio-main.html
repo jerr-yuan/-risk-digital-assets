@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>袁鹏的作品集 | Portfolio</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      color: #1d1d1f;
+      background: #fbfbfd;
+    }
+
+    header {
+      background: #000;
+      color: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    header nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover,
+    header nav a.active {
+      color: #fff;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: #fff;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      line-height: 1.1;
+      font-weight: 600;
+      margin: 0 0 15px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      line-height: 1.4;
+      font-weight: 400;
+      color: #86868b;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .section {
+      margin-bottom: 80px;
+    }
+
+    .section-header {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .section-desc {
+      font-size: 18px;
+      color: #86868b;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #f0f0f0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      color: #6e6e73;
+      line-height: 1.6;
+      flex-grow: 1;
+      margin-bottom: 20px;
+    }
+
+    .btn-link {
+      display: inline-block;
+      color: #0071e3;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    .btn-link:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 60px 20px;
+      background: #fff;
+      color: #86868b;
+      font-size: 14px;
+      border-top: 1px solid #e5e5e5;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Strategy & Agent Lab</h1>
+    <nav>
+      <a href="index.html">产品主页</a>
+      <a href="achievements.html">业绩成就</a>
+      <a href="portfolio-main.html" class="active">作品集</a>
+      <a href="wiki.html">资产知识库</a>
+      <a href="blog.html">深度思考</a>
+      <a href="1.resume/袁鹏-简历-v3.8-标准版.html" target="_blank">我的简历 ↗</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>Structured <span style="color: #0071e3">Portfolio</span>.</h2>
+    <p>结构化作品集。不仅展示结果，更展示思考过程、方法论沉淀与可复用资产。</p>
+  </div>
+
+  <div class="container">
+
+    <!-- Section 1: Projects -->
+    <div class="section">
+      <div class="section-header">
+        <h3 class="section-title">项目与产出 (Projects)</h3>
+        <p class="section-desc">脱敏后的项目实战记录，侧重展示解决问题的思路与全链路方法论。</p>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <h3>菲律宾贷后全链路建设</h3>
+          <p>从 0 到 1 搭建 5 条业务线策略体系。实现全业务线回收率历史新高 (+55%) 与 ROI 大幅增长 (+40%)。</p>
+          <a href="portfolio-项目摘要.md" class="btn-link">阅读项目摘要 &rarr;</a>
+        </div>
+        <div class="card">
+          <h3>早期重点项目</h3>
+          <p>度小满时期的深度运营策略：企微/法催能力建设、坐席行为研究与系统优化。</p>
+          <a href="portfolio-项目摘要.md" class="btn-link">阅读项目摘要 &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Assets & Templates -->
+    <div class="section">
+      <div class="section-header">
+        <h3 class="section-title">Prompts 与模板 (Assets)</h3>
+        <p class="section-desc">沉淀的可复用数字资产，含风控分析提示词、汇报模板与指标口径。</p>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Prompts & Templates</h3>
+          <p>策略效果归因提示词、QBR 一页摘要结构、指标口径澄清模板。</p>
+          <a href="portfolio-Prompts与模板.md" class="btn-link">查看模板库 &rarr;</a>
+        </div>
+        <div class="card">
+          <h3>核心指标评估规则</h3>
+          <p>人效提升与 ROI 增长的测算逻辑与公式推导。</p>
+          <a href="核心指标贡献评估规则.md" class="btn-link">查看评估规则 &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Resources -->
+    <div class="section">
+      <div class="section-header">
+        <h3 class="section-title">精选学习资源 (Resources)</h3>
+        <p class="section-desc">风控、大模型、消费金融领域的精选文章与报告。</p>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Knowledge Base</h3>
+          <p>收集并整理的行业洞察与技术文档。</p>
+          <a href="portfolio-精选学习资源.md" class="btn-link">浏览资源列表 &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2026 Strategy & Agent Lab. Built with Cursor & Mr.Y.</p>
+  </div>
+</body>
+
+</html>
