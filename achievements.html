@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>袁鹏的策略与 Agent 实验室 | Achievements</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      color: #1d1d1f;
+      background: #fff;
+    }
+
+    header {
+      background: #000;
+      color: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    header nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover,
+    header nav a.active {
+      color: #fff;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: #fbfbfd;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .hero h2 {
+      font-size: 56px;
+      line-height: 1.07;
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+
+    .hero p {
+      font-size: 24px;
+      line-height: 1.3;
+      font-weight: 400;
+      color: #86868b;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
+    .section-title {
+      font-size: 40px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    /* Chart Styles */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 60px;
+      margin-bottom: 80px;
+    }
+
+    .metric-card {
+      background: #fff;
+      padding: 0;
+    }
+
+    .metric-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 20px;
+    }
+
+    .metric-title {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .metric-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: #0071e3;
+    }
+
+    .chart-container {
+      margin-top: 20px;
+    }
+
+    .bar-group {
+      margin-bottom: 15px;
+    }
+
+    .bar-label {
+      font-size: 14px;
+      color: #86868b;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .bar-track {
+      background: #f5f5f7;
+      height: 24px;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: #86868b;
+      /* Default gray for baseline */
+      border-radius: 4px;
+      width: 0;
+      transition: width 1s ease-out;
+    }
+
+    .bar-fill.highlight {
+      background: #0071e3;
+      /* Blue for improved */
+    }
+
+    .bar-fill.highlight-green {
+      background: #34c759;
+      /* Green for ROI/Profit */
+    }
+
+    .bar-fill.highlight-purple {
+      background: #bf5af2;
+      /* Purple for Product 2 */
+    }
+
+    /* Business Lines Grid */
+    .business-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .biz-card {
+      background: #f5f5f7;
+      border-radius: 16px;
+      padding: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .biz-card:hover {
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .biz-tag-core {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #e3f2fd;
+      color: #0071e3;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 99px;
+      font-weight: 600;
+    }
+
+    .biz-icon {
+      font-size: 32px;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .biz-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+
+    .biz-desc {
+      font-size: 14px;
+      color: #6e6e73;
+      line-height: 1.5;
+    }
+
+    .logic-section {
+      margin-top: 80px;
+      background: #1d1d1f;
+      color: #fff;
+      padding: 60px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .logic-section h3 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .logic-section p {
+      font-size: 18px;
+      color: #a1a1a6;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .logic-link {
+      color: #2997ff;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .logic-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Strategy & Agent Lab</h1>
+    <nav>
+      <a href="index.html">产品主页</a>
+      <a href="wiki.html">资产知识库</a>
+      <a href="blog.html">深度思考</a>
+      <a href="achievements.html" class="active">业绩成就</a>
+      <a href="1.resume/袁鹏-简历-v3.7-标准版.html" target="_blank">我的简历 ↗</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>Business <span style="color: #0071e3">Impact</span></h2>
+    <p>不仅仅是策略优化，更是商业价值的指数级放大。</p>
+  </div>
+
+  <div class="container">
+
+    <h3 class="section-title">核心指标相对提升 (Relative Lift)</h3>
+    <div class="metrics-grid">
+
+      <!-- Metric 3: Recovery Rate (Enhanced) -->
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">回收率提升 (Lift)</span>
+          <!-- <span class="metric-value">+3.0% / +5.3%</span> -->
+        </div>
+
+        <!-- CL Product -->
+        <div style="margin-bottom: 25px;">
+          <div style="font-weight: 600; margin-bottom: 8px; font-size: 16px;">CL (主力产品)</div>
+          <div class="chart-container" style="margin-top: 5px;">
+            <div class="bar-group" style="margin-bottom: 8px;">
+              <div class="bar-label">
+                <span>Peak Lift</span>
+                <span style="color: #0071e3; font-weight: 600;">+3.0% Abs.</span>
+              </div>
+              <div class="bar-track" style="height: 16px;">
+                <div class="bar-fill highlight" style="width: 90%;"></div>
+              </div>
+            </div>
+            <div class="bar-group" style="margin-bottom: 0;">
+              <div class="bar-label">
+                <span>Average Lift</span>
+                <span style="color: #0071e3; font-weight: 600;">+2.3% Abs.</span>
+              </div>
+              <div class="bar-track" style="height: 16px;">
+                <div class="bar-fill highlight" style="width: 80%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TT Product -->
+        <div>
+          <div style="font-weight: 600; margin-bottom: 8px; font-size: 16px;">TT (BNPL 第二主力)</div>
+          <div class="chart-container" style="margin-top: 5px;">
+            <div class="bar-group" style="margin-bottom: 8px;">
+              <div class="bar-label">
+                <span>Peak Lift</span>
+                <span style="color: #bf5af2; font-weight: 600;">+5.3% Abs.</span>
+              </div>
+              <div class="bar-track" style="height: 16px;">
+                <div class="bar-fill highlight-purple" style="width: 100%;"></div>
+              </div>
+            </div>
+            <div class="bar-group" style="margin-bottom: 0;">
+              <div class="bar-label">
+                <span>Average Lift</span>
+                <span style="color: #bf5af2; font-weight: 600;">+6.4% Abs.</span>
+              </div>
+              <div class="bar-track" style="height: 16px;">
+                <div class="bar-fill highlight-purple" style="width: 110%;"></div>
+                <!-- 6.4 is slightly larger than 5.3 visually relative to baseline? No, bars are illustrative. -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size: 14px; color: #86868b; margin-top: 15px;">
+          策略稳定性验证：在业务体量翻倍的压力下，不仅守住了底线，更实现了核心产品回收率的全面突破。
+        </p>
+      </div>
+
+      <!-- Metric 1: Efficiency -->
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">人效提升 (Efficiency)</span>
+          <span class="metric-value">+44%</span>
+        </div>
+        <div class="chart-container">
+          <div class="bar-group">
+            <div class="bar-label">
+              <span>2024 Baseline</span>
+              <span>1.0x</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: 69%;"></div> <!-- 1.0 / 1.44 approx 69% scale -->
+            </div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-label">
+              <span>2025 Peak</span>
+              <span>1.44x</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill highlight" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size: 14px; color: #86868b; margin-top: 15px;">
+          业务体量增长 80% 的情况下，通过智能分案与 Agent 巡检，将人力增长控制在 25% 以内。
+        </p>
+      </div>
+
+      <!-- Metric 2: ROI -->
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">ROI 增长</span>
+          <span class="metric-value">+50%</span>
+        </div>
+        <div class="chart-container">
+          <div class="bar-group">
+            <div class="bar-label">
+              <span>2024 Baseline</span>
+              <span>1.0x</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: 66%;"></div> <!-- 1.0 / 1.5 approx 66% -->
+            </div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-label">
+              <span>2025 Model</span>
+              <span>1.5x</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill highlight-green" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size: 14px; color: #86868b; margin-top: 15px;">
+          基于人力成本占 70% 的模型测算。回收金额增速大幅跑赢成本增速。
+        </p>
+      </div>
+
+      <!-- Metric 4: Volume & Stability -->
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">业务规模 (Volume)</span>
+          <span class="metric-value">+80%</span>
+        </div>
+        <div class="chart-container">
+          <div class="bar-group">
+            <div class="bar-label">
+              <span>2024 Scale</span>
+              <span>1.0x</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: 55%;"></div>
+            </div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-label">
+              <span>2025 Peak</span>
+              <span>1.8x</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill highlight" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size: 14px; color: #86868b; margin-top: 15px;">
+          <strong>策略稳定性 (Stability)</strong>：系统承载能力经受住了翻倍压力的考验，实现了规模与质量的双重增长。
+        </p>
+      </div>
+
+    </div>
+
+    <h3 class="section-title">多元化业务版图 (7 Business Lines)</h3>
+    <div class="business-grid">
+      <div class="biz-card">
+        <span class="biz-tag-core">Core I</span>
+        <span class="biz-icon">💰</span>
+        <h4 class="biz-title">Cash Loan (现金贷)</h4>
+        <p class="biz-desc">主力业务。全生命周期策略覆盖，从 FPD 到 360+ 逾期管理。贡献 80% 营收。</p>
+      </div>
+      <div class="biz-card">
+        <span class="biz-icon">💳</span>
+        <h4 class="biz-title">Credit Card (信用卡)</h4>
+        <p class="biz-desc">
+          精细化客群经营。基于“风险-意愿-能力”的分层策略：对困难客户主动营销分期以平滑风险；对优质且有意愿的客户引导分期以增加营收；对无意愿的优质客户则减少打扰。实现了风险、收益与体验的动态平衡。</p>
+      </div>
+      <div class="biz-card">
+        <span class="biz-tag-core" style="background: #f3e5f5; color: #bf5af2;">Core II</span>
+        <span class="biz-icon">📱</span>
+        <h4 class="biz-title">BNPL (TikTok)</h4>
+        <p class="biz-desc">场景金融 (0-1)。嵌入 TikTok 电商生态，处理高频小额交易风险，秒级决策。</p>
+      </div>
+      <div class="biz-card">
+        <span class="biz-icon">🏘️</span>
+        <h4 class="biz-title">Offline (线下产品)</h4>
+        <p class="biz-desc">大额信贷。从全局视角构建风控经营体系：<br>• <b>产品侧</b>：设计刚性约束增加违约成本，从源头筛选优质客群；<br>•
+          <b>内部侧</b>：实施差异化的分案与考核策略，提升团队人效；<br>• <b>外部侧</b>：根据资产属性拓展专业催收资源，形成处置合力。</p>
+      </div>
+      <div class="biz-card">
+        <span class="biz-icon">🔋</span>
+        <h4 class="biz-title">Recharge (充值/虚拟)</h4>
+        <p class="biz-desc">高频小额产品。核心策略在于极致的低成本运营。采用静默式数字化处置方案，在确保绝对不影响核心主营业务（Core Business）流转的前提下，实现极高并发下的风险兜底。</p>
+      </div>
+      <div class="biz-card">
+        <span class="biz-icon">🚀</span>
+        <h4 class="biz-title">Innovation (0-to-1)</h4>
+        <p class="biz-desc">成功孵化 5 条新业务线。建立了一套标准化的冷启动风控框架 (Playbook)。</p>
+      </div>
+    </div>
+
+    <div class="logic-section">
+      <h3>核心评估逻辑</h3>
+      <p>
+        为什么我们关注人效与 ROI？<br>
+        在贷后管理中，人力成本通常占运营总成本的 70% 以上。<br>
+        只要控制住人力增长，同时最大化回收产出，就能直接撬动净利润。
+      </p>
+      <a href="核心指标贡献评估规则.md" class="logic-link">阅读完整评估规则文档 (Markdown) &rarr;</a>
+    </div>
+
+  </div>
+
+  <div class="feature-strip" style="margin-top: 0; background: #fbfbfd; border-top: 1px solid #e5e5e5; color: #1d1d1f;">
+    <p style="font-size: 14px; color: #86868b;">
+      * 数据已进行脱敏处理，仅展示相对趋势与提升幅度。<br>
+      &copy; 2026 Strategy & Agent Lab
+    </p>
+  </div>
+</body>
+
+</html>

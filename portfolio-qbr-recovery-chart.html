@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>QBR 全业务线回收率对比（脱敏）</title>
+  <style>
+    body {
+      font-family: "Microsoft YaHei", sans-serif;
+      margin: 24px;
+      max-width: 640px;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 16px;
+    }
+
+    .chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 24px;
+      margin: 20px 0;
+      padding: 16px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .bar-wrap {
+      text-align: center;
+      flex: 1;
+    }
+
+    .bar {
+      width: 100%;
+      max-width: 60px;
+      margin: 0 auto 8px;
+      background: #1890ff;
+      border-radius: 4px 4px 0 0;
+      min-height: 20px;
+    }
+
+    .bar.baseline {
+      background: #d9d9d9;
+    }
+
+    .bar.current {
+      background: #52c41a;
+    }
+
+    .bar-label {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .bar-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .lift {
+      font-size: 12px;
+      color: #52c41a;
+      margin-top: 4px;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #999;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>全业务线回收率 · 同比/环比提升（脱敏示意）</h2>
+  <p>以下为本人负责/参与年度内，全业务线回收水平与历史对比；具体数值请从 MBR/QBR 材料填入后替换占位。</p>
+
+  <!-- 方案一：年度对比 几根柱子 -->
+  <div class="chart" id="chart-year">
+    <div class="bar-wrap">
+      <div class="bar baseline" style="height: 50px;" data-value="基线"></div>
+      <div class="bar-label">2022 基线</div>
+      <div class="bar-value">—</div>
+    </div>
+    <div class="bar-wrap">
+      <div class="bar" style="height: 58px;" data-value="+8%"></div>
+      <div class="bar-label">2023</div>
+      <div class="bar-value">54%</div>
+      <div class="lift">同比 +6%</div>
+    </div>
+    <div class="bar-wrap">
+      <div class="bar current" style="height: 72px;" data-value="历史最高"></div>
+      <div class="bar-label">2024</div>
+      <div class="bar-value">62%</div>
+      <div class="lift">同比 +8% · 历史最高</div>
+    </div>
+    <div class="bar-wrap">
+      <div class="bar" style="height: 78px;" data-value=""></div>
+      <div class="bar-label">2025</div>
+      <div class="bar-value">68%</div>
+      <div class="lift">同比 +6%</div>
+    </div>
+  </div>
+
+  <!-- 数据表：从 MBR/QBR 填入后替换下方数值 -->
+  <table style="width:100%; border-collapse:collapse; margin-top:16px; font-size:13px;">
+    <thead>
+      <tr style="background:#f5f5f5;">
+        <th style="border:1px solid #e8e8e8; padding:8px;">年度</th>
+        <th style="border:1px solid #e8e8e8; padding:8px;">全业务线回收率</th>
+        <th style="border:1px solid #e8e8e8; padding:8px;">同比提升</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border:1px solid #e8e8e8; padding:8px;">2022 基线</td>
+        <td style="border:1px solid #e8e8e8; padding:8px;">—</td>
+        <td style="border:1px solid #e8e8e8; padding:8px;">—</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #e8e8e8; padding:8px;">2023</td>
+        <td style="border:1px solid #e8e8e8; padding:8px;">54%</td>
+        <td style="border:1px solid #e8e8e8; padding:8px;">+6%</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #e8e8e8; padding:8px;">2024</td>
+        <td style="border:1px solid #e8e8e8; padding:8px;">62%</td>
+        <td style="border:1px solid #e8e8e8; padding:8px;">+8% · 历史最高</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #e8e8e8; padding:8px;">2025</td>
+        <td style="border:1px solid #e8e8e8; padding:8px;">68%</td>
+        <td style="border:1px solid #e8e8e8; padding:8px;">+6%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="note">说明：上表为脱敏示例（54%/62%/68% 等），实际展示时可从 MBR/QBR 替换为真实回收率与同比。本页仅用于个人作品集/面试展示，数据已脱敏。</p>
+
+  <p class="note">使用方式：在本地用浏览器打开本 HTML，截图或复制图表区域粘贴到 Faces/PPT；或将本文件部署到个人主页「业务贡献」下的「QBR 回收」模块。</p>
+</body>
+
+</html>

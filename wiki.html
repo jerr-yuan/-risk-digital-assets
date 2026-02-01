@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki: 核心资产库 - 袁鹏</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            height: 100vh;
+            color: #333;
+            overflow: hidden;
+        }
+
+        /* Unified Header */
+        header {
+            background: #1d1d1f;
+            color: #fff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            font-family: inherit;
+            letter-spacing: normal;
+            color: #fff;
+        }
+
+        header nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover,
+        header nav a.active {
+            color: #fff;
+        }
+
+        /* Main Container */
+        .main-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: #f5f7f9;
+            border-right: 1px solid #e1e4e8;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid #e1e4e8;
+            background: #fff;
+        }
+
+        .sidebar-header h2 {
+            font-size: 14px;
+            margin: 0;
+            font-weight: 600;
+            color: #1d1d1f;
+            border: none;
+            padding: 0;
+        }
+
+        .sidebar-nav {
+            overflow-y: auto;
+            flex: 1;
+            padding: 20px;
+        }
+
+        .sidebar h3 {
+            font-size: 12px;
+            color: #5c6975;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .sidebar h3:first-child {
+            margin-top: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 4px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #444;
+            font-size: 14px;
+            display: block;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .sidebar a:hover {
+            background: #e1e4e8;
+            color: #000;
+        }
+
+        .sidebar a.active {
+            background: #e1ecf4;
+            color: #0071e3;
+            font-weight: 600;
+        }
+
+        /* Content */
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .top-bar {
+            padding: 15px 40px;
+            border-bottom: 1px solid #eaecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            flex-shrink: 0;
+        }
+
+        .breadcrumbs {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .content {
+            flex: 1;
+            padding: 40px 60px;
+            overflow-y: auto;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Typography */
+        h1 {
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #1d1d1f;
+        }
+
+        h2 {
+            margin-top: 40px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eaecef;
+            font-size: 22px;
+            color: #1d1d1f;
+        }
+
+        h3 {
+            margin-top: 30px;
+            font-size: 18px;
+            color: #1d1d1f;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 16px;
+            color: #333;
+        }
+
+        /* Code & Diagrams */
+        code {
+            background: #f6f8fa;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 90%;
+            color: #d73a49;
+        }
+
+        pre {
+            background: #f6f8fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #e1e4e8;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: transparent;
+            padding: 0;
+            color: inherit;
+            font-size: 13px;
+        }
+
+        .mermaid {
+            background: #fff;
+            border: 1px solid #e1e4e8;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #e1ecf4;
+            color: #0071e3;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-right: 5px;
+            border: 1px solid #cce5ff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Strategy & Agent Lab</h1>
+        <nav>
+            <a href="index.html">产品主页</a>
+            <a href="wiki.html" class="active">资产知识库</a>
+            <a href="blog.html">深度思考</a>
+            <a href="achievements.html">业绩成就</a>
+            <a href="1.resume/袁鹏-简历-v3.7-标准版.html" target="_blank">我的简历 ↗</a>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>目录导航</h2>
+            </div>
+            <div class="sidebar-nav">
+                <h3>00-方法论与协作</h3>
+                <ul>
+                    <li><a href="#methodology">策略 0→1 构建法</a></li>
+                    <li><a href="#framework">四类工作框架</a></li>
+                </ul>
+                <h3>01-智能体 (Agents)</h3>
+                <ul>
+                    <li><a href="#inspector" class="active">🤖 智能巡检 Agent</a></li>
+                    <li><a href="#copilot">🧠 S0 策略副驾驶</a></li>
+                </ul>
+                <h3>10-风险策略</h3>
+                <ul>
+                    <li><a href="#s0-engine">S0 动态分案引擎</a></li>
+                    <li><a href="#ofw">OFW 绩效模型</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="top-bar">
+                <div class="breadcrumbs">01-智能体 / 智能巡检 Agent</div>
+            </div>
+
+            <div class="content">
+                <h1 id="inspector">🤖 智能巡检 Agent (Smart Inspector)</h1>
+                <div style="margin-bottom: 20px;">
+                    <span class="tag">版本: V2.1</span>
+                    <span class="tag">类型: 监控类 Agent</span>
+                    <span class="tag">状态: 生产环境运行中</span>
+                </div>
+
+                <p><strong>智能巡检 Agent</strong> 是基于 LLM 构建的自动化监控助手，旨在替代人工进行每日核心指标（如回收率、可联率）的监控与异动归因。它运行在“日常指标监控”工作流中。</p>
+
+                <h2>1. 核心逻辑 (Architecture)</h2>
+                <p>该 Agent 遵循 <code>Monitor -> Detect -> Diagnose -> Report</code> 的工作流。</p>
+                <div class="mermaid">
+                    graph LR
+                    A[数据源: DWD_Asset] -->|SQL Query| B(规则引擎)
+                    B -->|触发阈值| C{是否异常?}
+                    C -->|是| D[LLM 归因分析]
+                    C -->|否| E[生成常规日报]
+                    D -->|输入: 维度数据+历史基线| F[生成异动报告]
+                    F --> G[推送企微/邮件]
+                </div>
+
+                <h2>2. 系统提示词 (System Prompt) - 脱敏版</h2>
+                <p>以下是用于驱动该 Agent 进行归因分析的核心 Prompt。</p>
+                <pre><code class="language-markdown"># Role
+You are a Senior Risk Strategy Analyst. Your goal is to monitor daily collection metrics and identify the root cause of any anomalies.
+
+# Context
+- Metric: M1 Collection Rate (Target: 92%)
+- Dimensions: Channel (SMS/Robot/Human), Team (In-house/Outsource), Risk Level (S0-S2).
+
+# Task
+1. Analyze the provided JSON data containing yesterday's performance.
+2. Compare against the 7-day moving average (Baseline).
+3. If the deviation is > 5%, identify the top 2 contributing dimensions.
+4. Generate a concise report in Markdown.
+
+# Output Format
+## 🚨 异常告警
+- 指标：M1 回收率 (88.5% vs 目标 92%)
+- 归因：
+  1. **外包团队 B** (权重 30%) 环比下降 15%，主要受台风天气影响（关键词匹配：Typhoon）。
+  2. **短信通道 C** (权重 10%) 到达率异常 (40% vs 平时 98%)。
+## ✅ 建议
+- 立即切换短信通道至 D。
+- 调整外包团队 B 今日目标。</code></pre>
+
+                <h2>3. 落地效果 (Impact)</h2>
+                <ul>
+                    <li><strong>时效性提升</strong>：异常发现时间从“次日中午”提前至“当日 09:00”。</li>
+                    <li><strong>精力释放</strong>：每日节省分析师 1.5 小时“做数”时间，专注于决策。</li>
+                </ul>
+
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 40px 0;">
+
+                <h1 id="s0-engine">🧠 S0 动态分案引擎</h1>
+                <div style="margin-bottom: 20px;">
+                    <span class="tag">模块: 核心策略</span>
+                    <span class="tag">场景: 产能管理</span>
+                </div>
+                <p>（此处为 S0 引擎的详细文档位，展示决策树与产能逻辑...）</p>
+
+                <h1 id="methodology">📘 策略 0→1 构建法</h1>
+                <p>（此处为方法论的详细文档位...）</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mermaid JS for rendering -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</body>
+
+</html>

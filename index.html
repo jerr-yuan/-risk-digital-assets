@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>袁鹏的策略与 Agent 实验室 | Product Home</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      color: #1d1d1f;
+    }
+
+    header {
+      background: #000;
+      color: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    header nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover,
+    header nav a.active {
+      color: #fff;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 120px 20px;
+      background: #fbfbfd;
+    }
+
+    .hero h2 {
+      font-size: 56px;
+      line-height: 1.07;
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+
+    .hero p {
+      font-size: 24px;
+      line-height: 1.3;
+      font-weight: 400;
+      color: #86868b;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .btn {
+      background: #0071e3;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 980px;
+      text-decoration: none;
+      font-size: 17px;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #0077ed;
+    }
+
+    .showcase {
+      padding: 80px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 40px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #f0f0f0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      font-size: 28px;
+      margin-top: 0;
+    }
+
+    .card .tag {
+      color: #bf4800;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .card p {
+      color: #6e6e73;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .card-link {
+      margin-top: 20px;
+      color: #0071e3;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    .code-preview {
+      background: #1d1d1f;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      font-family: monospace;
+      font-size: 12px;
+      margin-top: 20px;
+      overflow-x: auto;
+    }
+
+    .feature-strip {
+      background: #1d1d1f;
+      color: #fff;
+      padding: 100px 40px;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .feature-strip h3 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .feature-strip p {
+      font-size: 20px;
+      color: #a1a1a6;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Strategy & Agent Lab</h1>
+    <nav>
+      <a href="index.html" class="active">产品主页</a>
+      <a href="wiki.html">资产知识库</a>
+      <a href="blog.html">深度思考</a>
+      <a href="achievements.html">业绩成就</a>
+      <a href="1.resume/袁鹏-简历-v3.7-标准版.html" target="_blank">我的简历 ↗</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>Risk Strategy <span style="color: #0071e3">Re-imagined</span>.</h2>
+    <p>将传统风控策略与 AI Agent 深度融合。从“人肉做数”到“智能决策”的进化。</p>
+    <div style="margin-top: 20px;">
+      <a href="wiki.html" class="btn">浏览资产库</a>
+      <a href="blog.html" style="margin-left: 20px; color: #0071e3; text-decoration: none;">阅读复盘思考 &rarr;</a>
+    </div>
+  </div>
+
+  <div class="showcase" id="showcase">
+    <h3 class="section-title">Star Products</h3>
+    <div class="card-grid">
+      <!-- Asset 1: Inspector -->
+      <div class="card">
+        <span class="tag">AI Agent</span>
+        <h3>智能巡检助手</h3>
+        <p>每天 09:00 自动生成风险归因报告。它不只是报表工具，而是一个具备 5 年经验的虚拟分析师。通过 LLM 进行多维度归因分析，释放分析师 90% 的做数精力。</p>
+        <div class="code-preview">
+          # System Prompt (Snippet)
+          You are a Senior Analyst.
+          Monitor: M1 Collection Rate
+          Action: If deviation > 5%,
+          drill down to Channel/Team/RiskLevel.
+          Output: Markdown Report with Root Cause.
+        </div>
+        <a href="wiki.html#inspector" class="card-link">查看完整 Prompt 与逻辑 &rarr;</a>
+      </div>
+
+      <!-- Asset 2: S0 Engine -->
+      <div class="card">
+        <span class="tag">Core Engine</span>
+        <h3>S0 动态分案引擎</h3>
+        <p>基于风险预测与人力产能的动态调度系统。在高风险期自动收紧，在低风险期释放人力。实现了运营资源的最优动态配置。</p>
+        <div class="code-preview">
+          def allocate_case(risk_score, capacity):
+          # Dynamic Threshold based on capacity
+          if capacity.is_strained():
+          threshold = 0.8 # Only high risk
+          else:
+          threshold = 0.4 # Cover med risk
+          return "Call" if risk_score > threshold else "SMS"
+        </div>
+        <a href="blog.html#s0-engine" class="card-link">阅读构建实录 &rarr;</a>
+      </div>
+
+      <!-- Asset 3: Methodology -->
+      <div class="card">
+        <span class="tag">Framework</span>
+        <h3>策略 0→1 Playbook</h3>
+        <p>一套经过跨国业务验证的通用策略构建方法论。从痛点深挖到机制设计，再到 AB 测试验证。已成功复用于 OFW 绩效、PK 机制、新国别冷启动等多个场景。</p>
+        <a href="wiki.html#methodology" class="card-link">查看方法论详情 &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-strip">
+    <h3>为什么这很重要？</h3>
+    <p>
+      简历只是结果的罗列。这里的每一个 Code Snippet 和 Prompt，都是我在真实业务中解决复杂问题的思考结晶。<br><br>
+      它们是可复用、可验证、可交付的<b>数字资产</b>。
+    </p>
+  </div>
+</body>
+
+</html>
