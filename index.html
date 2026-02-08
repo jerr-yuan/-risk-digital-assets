@@ -24,11 +24,7 @@
       z-index: 100;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 20px;
-      font-weight: 600;
-    }
+    header h1 { margin: 0; font-size: 20px; font-weight: 600; }
 
     header nav a {
       color: #ccc;
@@ -38,9 +34,57 @@
       transition: color 0.3s;
     }
 
-    header nav a:hover,
-    header nav a.active {
-      color: #fff;
+    header nav a:hover, header nav a.active { color: #fff; }
+
+    /* Section Nav (sidebar dots) */
+    .section-nav {
+      position: fixed;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 90;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .section-nav a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      gap: 10px;
+      flex-direction: row-reverse;
+    }
+
+    .section-nav .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #c7c7cc;
+      transition: all 0.3s;
+      flex-shrink: 0;
+    }
+
+    .section-nav a:hover .dot,
+    .section-nav a.active .dot {
+      background: #0071e3;
+      transform: scale(1.4);
+    }
+
+    .section-nav .nav-label {
+      font-size: 12px;
+      color: #86868b;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(5px);
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    .section-nav a:hover .nav-label {
+      opacity: 1;
+      transform: translateX(0);
+      color: #1d1d1f;
     }
 
     /* Hero */
@@ -77,9 +121,7 @@
       transition: background 0.3s;
     }
 
-    .btn:hover {
-      background: #0077ed;
-    }
+    .btn:hover { background: #0077ed; }
 
     /* Metrics Strip */
     .metrics-strip {
@@ -106,9 +148,7 @@
       margin: 0 auto;
     }
 
-    .metric-item {
-      text-align: center;
-    }
+    .metric-item { text-align: center; }
 
     .metric-item .value {
       font-size: 42px;
@@ -127,11 +167,10 @@
       line-height: 1.4;
     }
 
-    /* Showcase */
-    .showcase {
+    /* Business Lines */
+    .biz-section {
       padding: 80px 40px;
-      max-width: 1200px;
-      margin: 0 auto;
+      background: #f5f5f7;
     }
 
     .section-title {
@@ -139,77 +178,6 @@
       font-weight: 600;
       text-align: center;
       margin-bottom: 60px;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 40px;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
-      border: 1px solid #f0f0f0;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    .card h3 {
-      font-size: 28px;
-      margin-top: 0;
-    }
-
-    .card .tag {
-      color: #bf4800;
-      font-weight: 600;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .card p {
-      color: #6e6e73;
-      line-height: 1.6;
-      flex-grow: 1;
-    }
-
-    .card-link {
-      margin-top: 20px;
-      color: #0071e3;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .card-link:hover {
-      text-decoration: underline;
-    }
-
-    .code-preview {
-      background: #1d1d1f;
-      color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      font-family: monospace;
-      font-size: 12px;
-      margin-top: 20px;
-      overflow-x: auto;
-    }
-
-    /* Business Lines */
-    .biz-section {
-      padding: 80px 40px;
-      background: #f5f5f7;
     }
 
     .biz-grid {
@@ -249,6 +217,139 @@
     .biz-title { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
     .biz-desc { font-size: 13px; color: #6e6e73; line-height: 1.5; margin: 0; }
 
+    /* Showcase */
+    .showcase {
+      padding: 80px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #f0f0f0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 { font-size: 28px; margin-top: 0; }
+
+    .card .tag {
+      color: #bf4800;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .card p {
+      color: #6e6e73;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .card-link {
+      margin-top: 20px;
+      color: #0071e3;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .card-link:hover { text-decoration: underline; }
+
+    .code-preview {
+      background: #1d1d1f;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      font-family: monospace;
+      font-size: 12px;
+      margin-top: 20px;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    /* Inspector Pipeline Visual */
+    .inspector-pipeline {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pipeline-step {
+      display: flex;
+      align-items: stretch;
+      gap: 14px;
+    }
+
+    .pipeline-timeline {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 20px;
+      flex-shrink: 0;
+    }
+
+    .pipeline-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #0071e3;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .pipeline-dot.green { background: #34c759; }
+    .pipeline-dot.orange { background: #ff9500; }
+
+    .pipeline-line {
+      width: 2px;
+      flex: 1;
+      background: #e5e5e5;
+    }
+
+    .pipeline-content {
+      flex: 1;
+      padding-bottom: 16px;
+    }
+
+    .pipeline-time {
+      font-size: 11px;
+      color: #86868b;
+      font-weight: 600;
+      font-family: monospace;
+    }
+
+    .pipeline-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1d1d1f;
+      margin: 2px 0;
+    }
+
+    .pipeline-desc {
+      font-size: 12px;
+      color: #86868b;
+      margin: 0;
+    }
+
     /* Feature Strip */
     .feature-strip {
       background: #1d1d1f;
@@ -257,10 +358,7 @@
       text-align: center;
     }
 
-    .feature-strip h3 {
-      font-size: 40px;
-      margin-bottom: 20px;
-    }
+    .feature-strip h3 { font-size: 40px; margin-bottom: 20px; }
 
     .feature-strip p {
       font-size: 20px;
@@ -273,6 +371,7 @@
       .hero h2 { font-size: 36px; }
       .metrics-grid { grid-template-columns: repeat(2, 1fr); }
       .section-title { font-size: 28px; }
+      .section-nav { display: none; }
     }
   </style>
 </head>
@@ -288,6 +387,22 @@
     </nav>
   </header>
 
+  <!-- Section Nav Sidebar -->
+  <div class="section-nav" id="sectionNav">
+    <a href="#metrics" data-section="metrics">
+      <span class="nav-label">核心指标</span>
+      <span class="dot"></span>
+    </a>
+    <a href="#business" data-section="business">
+      <span class="nav-label">业务版图</span>
+      <span class="dot"></span>
+    </a>
+    <a href="#products" data-section="products">
+      <span class="nav-label">核心产品</span>
+      <span class="dot"></span>
+    </a>
+  </div>
+
   <div class="hero">
     <h2>Risk Strategy <span style="color: #0071e3">Re-imagined</span>.</h2>
     <p>将传统风控策略与 AI Agent 深度融合。从"人肉做数"到"智能决策"的进化。</p>
@@ -297,8 +412,8 @@
     </div>
   </div>
 
-  <!-- Metrics Dashboard -->
-  <div class="metrics-strip">
+  <!-- 1. Metrics Dashboard -->
+  <div class="metrics-strip" id="metrics">
     <h3>Key Business Impact &middot; 2025</h3>
     <div class="metrics-grid">
       <div class="metric-item">
@@ -319,57 +434,13 @@
       </div>
       <div class="metric-item">
         <div class="value">7</div>
-        <div class="label">业务线覆盖<br>(4 条 0→1)</div>
+        <div class="label">业务线覆盖<br>(4 条 0&rarr;1)</div>
       </div>
     </div>
   </div>
 
-  <!-- Star Products -->
-  <div class="showcase" id="showcase">
-    <h3 class="section-title">Star Products</h3>
-    <div class="card-grid">
-      <div class="card">
-        <span class="tag">AI Agent</span>
-        <h3>智能巡检助手</h3>
-        <p>每天 09:00 自动生成风险归因报告。它不只是报表工具，而是一个具备 5 年经验的虚拟分析师。通过 LLM 进行多维度归因分析，释放分析师 90% 的做数精力。</p>
-        <div class="code-preview">
-          # System Prompt (Snippet)
-          You are a Senior Analyst.
-          Monitor: M1 Collection Rate
-          Action: If deviation > 5%,
-          drill down to Channel/Team/RiskLevel.
-          Output: Markdown Report with Root Cause.
-        </div>
-        <a href="cases/index.html#inspector" class="card-link">查看完整案例 &rarr;</a>
-      </div>
-
-      <div class="card">
-        <span class="tag">Core Engine</span>
-        <h3>S0 动态分案引擎</h3>
-        <p>基于风险预测与人力产能的动态调度系统。在高风险期自动收紧，在低风险期释放人力。实现了运营资源的最优动态配置。</p>
-        <div class="code-preview">
-          def allocate_case(risk_score, capacity):
-          # Dynamic Threshold based on capacity
-          if capacity.is_strained():
-          threshold = 0.8 # Only high risk
-          else:
-          threshold = 0.4 # Cover med risk
-          return "Call" if risk_score > threshold else "SMS"
-        </div>
-        <a href="cases/index.html#s0-engine" class="card-link">查看完整案例 &rarr;</a>
-      </div>
-
-      <div class="card">
-        <span class="tag">Framework</span>
-        <h3>策略 0&rarr;1 Playbook</h3>
-        <p>一套经过跨国业务验证的通用策略构建方法论。从痛点深挖到机制设计，再到 AB 测试验证。已成功复用于 OFW 绩效、PK 机制、新国别冷启动等多个场景。</p>
-        <a href="methodology/index.html" class="card-link">查看方法论详情 &rarr;</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Business Lines -->
-  <div class="biz-section">
+  <!-- 2. Business Lines (moved before Star Products) -->
+  <div class="biz-section" id="business">
     <h3 class="section-title" style="margin-bottom: 40px;">多元化业务版图 (7 Business Lines)</h3>
     <div class="biz-grid">
       <div class="biz-card">
@@ -407,6 +478,78 @@
     </div>
   </div>
 
+  <!-- 3. Star Products (moved after Business Lines) -->
+  <div class="showcase" id="products">
+    <h3 class="section-title">Star Products</h3>
+    <div class="card-grid">
+
+      <!-- Smart Inspector — pipeline visualization -->
+      <div class="card">
+        <span class="tag">AI Agent &middot; Production</span>
+        <h3>Smart Inspector 智能巡检</h3>
+        <p>基于 LLM 的多维归因系统。自动遍历客群/产品/渠道/组织层级，将风险异动定位从「天级」缩短至「分钟级」。</p>
+        <div class="inspector-pipeline">
+          <div class="pipeline-step">
+            <div class="pipeline-timeline">
+              <div class="pipeline-dot"></div>
+              <div class="pipeline-line"></div>
+            </div>
+            <div class="pipeline-content">
+              <span class="pipeline-time">08:00</span>
+              <div class="pipeline-title">Data Fetch &mdash; 多源数据采集</div>
+              <p class="pipeline-desc">SQL 自动拉取 T-1 全维度运营数据</p>
+            </div>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipeline-timeline">
+              <div class="pipeline-dot orange"></div>
+              <div class="pipeline-line"></div>
+            </div>
+            <div class="pipeline-content">
+              <span class="pipeline-time">08:30</span>
+              <div class="pipeline-title">LLM Reasoning &mdash; 异动归因</div>
+              <p class="pipeline-desc">基线对比 &rarr; 阈值触发 &rarr; 维度下钻 &rarr; 根因定位</p>
+            </div>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipeline-timeline">
+              <div class="pipeline-dot green"></div>
+            </div>
+            <div class="pipeline-content">
+              <span class="pipeline-time">09:00</span>
+              <div class="pipeline-title">Auto Report &mdash; 报告分发</div>
+              <p class="pipeline-desc">Markdown 归因报告 &rarr; 飞书/钉钉群推送</p>
+            </div>
+          </div>
+        </div>
+        <a href="cases/index.html#inspector" class="card-link">查看完整案例 &rarr;</a>
+      </div>
+
+      <!-- S0 Engine -->
+      <div class="card">
+        <span class="tag">Core Engine</span>
+        <h3>S0 动态分案引擎</h3>
+        <p>基于风险预测与人力产能的动态调度系统。在高风险期自动收紧，在低风险期释放人力。实现了运营资源的最优动态配置。</p>
+        <div class="code-preview">def allocate(risk, capacity):
+  if capacity.load > 0.9:
+    threshold = 0.8  # 仅高风险
+  else:
+    threshold = 0.4  # 覆盖中风险
+  return "Call" if risk > threshold
+         else "SMS"</div>
+        <a href="cases/index.html#s0-engine" class="card-link">查看完整案例 &rarr;</a>
+      </div>
+
+      <!-- Playbook -->
+      <div class="card">
+        <span class="tag">Framework</span>
+        <h3>策略 0&rarr;1 Playbook</h3>
+        <p>一套经过跨国业务验证的通用策略构建方法论。从痛点深挖到机制设计，再到 AB 测试验证。已成功复用于 OFW 绩效、PK 机制、新国别冷启动等多个场景。</p>
+        <a href="methodology/index.html" class="card-link">查看方法论详情 &rarr;</a>
+      </div>
+    </div>
+  </div>
+
   <div class="feature-strip">
     <h3>为什么这很重要？</h3>
     <p>
@@ -419,6 +562,22 @@
     * 数据已进行脱敏处理，仅展示相对趋势与提升幅度。<br>
     &copy; 2026 Strategy & Agent Lab
   </footer>
+
+  <!-- Section Nav Active State -->
+  <script>
+    const navLinks = document.querySelectorAll('.section-nav a');
+    const sections = ['metrics', 'business', 'products'];
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 200) current = id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.dataset.section === current);
+      });
+    });
+  </script>
 </body>
 
 </html>
