@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>袁鹏的策略与 Agent 实验室 | Case Studies</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      color: #1d1d1f;
+      background: #fff;
+    }
+
+    header {
+      background: #000;
+      color: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 { margin: 0; font-size: 20px; font-weight: 600; }
+
+    header nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover, header nav a.active { color: #fff; }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 60px;
+      background: #fbfbfd;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      line-height: 1.1;
+      font-weight: 600;
+      margin: 0 0 15px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #86868b;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    /* Case Card - Overview */
+    .case-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-bottom: 60px;
+      background: #f5f5f7;
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .case-card:hover { transform: translateY(-4px); }
+
+    .case-info {
+      padding: 50px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .case-tag {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #0071e3;
+      margin-bottom: 12px;
+    }
+
+    .case-info h3 {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+
+    .case-info p {
+      font-size: 15px;
+      color: #6e6e73;
+      line-height: 1.6;
+      margin: 0 0 20px;
+    }
+
+    .case-metrics {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 20px;
+    }
+
+    .metric { text-align: left; }
+    .metric .value {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0071e3;
+    }
+    .metric .label {
+      font-size: 12px;
+      color: #86868b;
+      margin-top: 2px;
+    }
+
+    .case-visual {
+      background: #1d1d1f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      min-height: 320px;
+    }
+
+    .case-visual .diagram {
+      color: #fff;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 13px;
+      line-height: 1.8;
+      white-space: pre;
+      opacity: 0.85;
+    }
+
+    /* Deep Dive Article */
+    .deep-dive {
+      max-width: 800px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+    }
+
+    .deep-dive h2 {
+      font-size: 32px;
+      margin-top: 80px;
+      margin-bottom: 15px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      padding-top: 40px;
+      border-top: 1px solid #eee;
+    }
+
+    .deep-dive h3 {
+      font-size: 22px;
+      color: #1d1d1f;
+      margin-top: 30px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .deep-dive .meta {
+      font-size: 14px;
+      color: #86868b;
+      margin-bottom: 10px;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .deep-dive p {
+      margin-bottom: 20px;
+      font-size: 17px;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    .code-block {
+      background: #f5f5f7;
+      color: #1d1d1f;
+      padding: 25px;
+      border-radius: 12px;
+      font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 14px;
+      overflow-x: auto;
+      margin: 24px 0;
+      border: 1px solid #e1e1e1;
+      white-space: pre-wrap;
+    }
+
+    a.anchor {
+      display: block;
+      position: relative;
+      top: -100px;
+      visibility: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .case-card { grid-template-columns: 1fr; }
+      .hero h2 { font-size: 36px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Strategy & Agent Lab</h1>
+    <nav>
+      <a href="../index.html">首页</a>
+      <a href="index.html" class="active">实战案例</a>
+      <a href="../methodology/index.html">方法论</a>
+      <a href="../1.resume/resume-v4.12.html" target="_blank">简历 &nearr;</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>Real-World <span style="color: #0071e3">Case Studies</span></h2>
+    <p>从策略思考到业务落地。每个案例都包含背景、方法、代码逻辑和量化结果。</p>
+  </div>
+
+  <div class="container">
+
+    <!-- Case 1: Collection Inspection Agent -->
+    <a id="inspector" class="anchor"></a>
+    <div class="case-card">
+      <div class="case-info">
+        <div class="case-tag">AI Agent</div>
+        <h3>智能数据巡检系统</h3>
+        <p>基于 LLM 的自动化异动归因系统。每日自动分析回收率波动原因，从"人肉做数 2 小时"到"AI 归因 5 分钟"，覆盖 90% 常规波动。</p>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="value">5 min</div>
+            <div class="label">归因分析时间（原 2h）</div>
+          </div>
+          <div class="metric">
+            <div class="value">90%</div>
+            <div class="label">波动归因覆盖率</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-visual">
+        <div class="diagram">
+08:00  SQL Fetcher
+  │    ┌──────────────┐
+  ├───▶│ T-1 运营数据  │
+  │    └──────┬───────┘
+  │           │
+09:00  LLM Reasoning
+  │    ┌──────▼───────┐
+  ├───▶│ 异动分析引擎  │
+  │    └──────┬───────┘
+  │           │
+09:05  Auto Report
+       ┌──────▼───────┐
+       │ 飞书/钉钉群发  │
+       └──────────────┘</div>
+      </div>
+    </div>
+
+    <!-- Case 2: S0 Dynamic Strategy Engine -->
+    <a id="s0-engine" class="anchor"></a>
+    <div class="case-card">
+      <div class="case-info">
+        <div class="case-tag">Core Engine</div>
+        <h3>S0 动态分案引擎</h3>
+        <p>基于当天产能与案件风险等级的实时匹配系统。从固定规则分案到动态优化匹配，最大化回收率的同时优化人力消耗。</p>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="value">+15%</div>
+            <div class="label">回收增益（相对值）</div>
+          </div>
+          <div class="metric">
+            <div class="value">+40%</div>
+            <div class="label">ROI 提升</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-visual">
+        <div class="diagram">
+┌─────────────┐
+│  案件风险分层  │
+│  High / Low   │
+└──────┬──────┘
+       │
+  ┌────▼────┐
+  │ 坐席能力  │
+  │ 分级匹配  │
+  └────┬────┘
+       │
+  ┌────▼────┐
+  │ 动态负荷  │
+  │ 优化分配  │
+  └─────────┘</div>
+      </div>
+    </div>
+
+    <!-- Case 3: Data Foundation -->
+    <div class="case-card">
+      <div class="case-info">
+        <div class="case-tag">Data Infrastructure</div>
+        <h3>贷后全业务数据底座</h3>
+        <p>梳理贷后全部业务场景的全部口径并标准化。打通组别、金额段、渠道等多维度，实现从"不知全貌"到"全管道管理"的跃迁。</p>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="value">7 条</div>
+            <div class="label">覆盖业务线</div>
+          </div>
+          <div class="metric">
+            <div class="value">4 条</div>
+            <div class="label">从 0 到 1 建设</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-visual">
+        <div class="diagram">
+  ┌──────────────────────┐
+  │     统一口径标准化     │
+  └──────────┬───────────┘
+             │
+  ┌──────────▼───────────┐
+  │   多维度打通（7 BU）   │
+  │  组别 × 金额 × 渠道   │
+  └──────────┬───────────┘
+             │
+  ┌──────────▼───────────┐
+  │  序时目标原子化管理    │
+  │  「当日应达成」颗粒度   │
+  └──────────────────────┘</div>
+      </div>
+    </div>
+
+    <!-- Case 4: PK Mechanism -->
+    <div class="case-card">
+      <div class="case-info">
+        <div class="case-tag">Strategy Innovation</div>
+        <h3>内外催 PK 机制</h3>
+        <p>模糊内催/外包边界的创新竞争机制。先定义案件，再匹配组织，再分配资源，通过公平竞争驱动回收效率的结构性提升。</p>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="value">v10</div>
+            <div class="label">策略迭代版本</div>
+          </div>
+          <div class="metric">
+            <div class="value">+9~15%</div>
+            <div class="label">注水策略增益</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-visual">
+        <div class="diagram">
+  ┌──────────┐  ┌──────────┐
+  │  内催团队  │  │  外包团队  │
+  └─────┬────┘  └────┬─────┘
+        │             │
+   ┌────▼─────────────▼────┐
+   │   统一案件池 & PK 规则  │
+   │   公平分配 → 效果对比   │
+   └───────────┬───────────┘
+               │
+        ┌──────▼──────┐
+        │  Winner 扩量  │
+        │  Loser 优化   │
+        └─────────────┘</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Deep Dive Articles (merged from blog.html) -->
+  <div class="deep-dive">
+    <h2>构建实录：我是如何用 Agent 取代"表哥表姐"的</h2>
+    <span class="meta">2026年1月 &middot; 深度复盘</span>
+    <p>在信也科技负责菲律宾贷后策略期间，我们面临一个经典痛点：<strong>数据太多，决策太少</strong>。分析师每天早上要花 1.5 小时从各个看板"搬运"数据，汇总成日报，还要手动查为什么 M1 回收率跌了。</p>
+    <p>为了解决这个问题，我构建了一个 <strong>Smart Inspector (智能巡检) Agent</strong>。</p>
+
+    <h3>核心 Prompt 设计</h3>
+    <p>这个 Agent 的核心不是写代码，而是教会它像一个资深分析师一样思考。以下是我迭代了 20 个版本后的 System Prompt 核心片段：</p>
+
+    <div class="code-block"># Role Definition
+You are not a data fetcher; you are a Senior Risk Analyst.
+Do not just report numbers (e.g., "M1 is 88%").
+Instead, tell me WHY (e.g., "M1 dropped because Vendor B's
+contact rate fell by 15% due to the typhoon").
+
+# Analysis Logic
+1. Check Baseline (7-day MA).
+2. If Deviation > Threshold:
+   - Slice by Channel (SMS/Voice/Robot)
+   - Slice by Vendor (Team A/B/C)
+3. Correlate with External Events (e.g., "Typhoon", "Holiday").</div>
+
+    <p>通过这段 Prompt，Agent 不再是复读机，它开始输出带有<strong>归因</strong>的洞察。这直接改变了我们的早会流程：从"汇报数据"变成了"讨论解决方案"。</p>
+
+    <h2>S0 动态分案：当风控策略遇上产能管理</h2>
+    <span class="meta">2025年12月 &middot; 策略架构</span>
+    <p>传统的分案是静态的：S0 进机器人，S1 进人工。但在菲律宾市场，发薪日（Payday）的案量是平时的 3 倍。如果坚持静态分案，发薪日当天人工团队会崩溃，而平时又会闲置。</p>
+    <p>我的解决方案是构建一个 <strong>动态分案引擎</strong>。核心逻辑如下：</p>
+
+    <div class="code-block">def allocate_case(risk_score, current_capacity):
+    """
+    根据实时产能动态调整策略阈值
+    """
+    # 如果产能告急（如发薪日）
+    if current_capacity.load_factor > 0.9:
+        threshold = 0.8  # 仅高风险进人工
+    else:
+        threshold = 0.4  # 中低风险也可进人工深挖
+
+    return "Manual_Call" if risk_score > threshold else "Robot_SMS"</div>
+
+    <p>这个简单的逻辑改变，让我们的 ROI 提升了约 40%。它不再是单纯的风控，而是<strong>运营资源的最优配置</strong>。</p>
+  </div>
+
+  <footer style="text-align:center; padding:40px; color:#86868b; font-size:13px; border-top:1px solid #e5e5e5;">
+    &copy; 2026 袁鹏 &middot; Strategy & Agent Lab
+  </footer>
+</body>
+
+</html>

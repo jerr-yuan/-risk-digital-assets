@@ -33,7 +33,7 @@
     header nav a {
       color: #ccc;
       text-decoration: none;
-      margin-left: 20px;
+      margin-left: 24px;
       font-size: 14px;
       transition: color 0.3s;
     }
@@ -43,9 +43,10 @@
       color: #fff;
     }
 
+    /* Hero */
     .hero {
       text-align: center;
-      padding: 120px 20px;
+      padding: 100px 20px 80px;
       background: #fbfbfd;
     }
 
@@ -80,6 +81,53 @@
       background: #0077ed;
     }
 
+    /* Metrics Strip */
+    .metrics-strip {
+      background: #1d1d1f;
+      color: #fff;
+      padding: 60px 40px;
+    }
+
+    .metrics-strip h3 {
+      text-align: center;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #86868b;
+      margin: 0 0 40px;
+      font-weight: 600;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .metric-item {
+      text-align: center;
+    }
+
+    .metric-item .value {
+      font-size: 42px;
+      font-weight: 700;
+      color: #0071e3;
+      line-height: 1.1;
+    }
+
+    .metric-item .value.green { color: #34c759; }
+    .metric-item .value.purple { color: #bf5af2; }
+
+    .metric-item .label {
+      font-size: 13px;
+      color: #a1a1a6;
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+
+    /* Showcase */
     .showcase {
       padding: 80px 40px;
       max-width: 1200px;
@@ -158,12 +206,55 @@
       overflow-x: auto;
     }
 
+    /* Business Lines */
+    .biz-section {
+      padding: 80px 40px;
+      background: #f5f5f7;
+    }
+
+    .biz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .biz-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .biz-card:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .biz-tag-core {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: #e3f2fd;
+      color: #0071e3;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 99px;
+      font-weight: 600;
+    }
+
+    .biz-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+    .biz-title { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
+    .biz-desc { font-size: 13px; color: #6e6e73; line-height: 1.5; margin: 0; }
+
+    /* Feature Strip */
     .feature-strip {
       background: #1d1d1f;
       color: #fff;
       padding: 100px 40px;
       text-align: center;
-      margin-top: 60px;
     }
 
     .feature-strip h3 {
@@ -177,6 +268,12 @@
       max-width: 700px;
       margin: 0 auto;
     }
+
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 36px; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .section-title { font-size: 28px; }
+    }
   </style>
 </head>
 
@@ -184,28 +281,53 @@
   <header>
     <h1>Strategy & Agent Lab</h1>
     <nav>
-      <a href="index.html" class="active">产品主页</a>
-      <a href="achievements.html">业绩成就</a>
-      <a href="portfolio-main.html">作品集</a>
-      <a href="wiki.html">资产知识库</a>
-      <a href="blog.html">深度思考</a>
-      <a href="1.resume/yuanpeng-resume-v3.8.html" target="_blank">我的简历 ↗</a>
+      <a href="index.html" class="active">首页</a>
+      <a href="cases/index.html">实战案例</a>
+      <a href="methodology/index.html">方法论</a>
+      <a href="1.resume/resume-v4.12.html" target="_blank">简历 &nearr;</a>
     </nav>
   </header>
 
   <div class="hero">
     <h2>Risk Strategy <span style="color: #0071e3">Re-imagined</span>.</h2>
-    <p>将传统风控策略与 AI Agent 深度融合。从“人肉做数”到“智能决策”的进化。</p>
+    <p>将传统风控策略与 AI Agent 深度融合。从"人肉做数"到"智能决策"的进化。</p>
     <div style="margin-top: 20px;">
-      <a href="wiki.html" class="btn">浏览资产库</a>
-      <a href="blog.html" style="margin-left: 20px; color: #0071e3; text-decoration: none;">阅读复盘思考 &rarr;</a>
+      <a href="cases/index.html" class="btn">查看实战案例</a>
+      <a href="methodology/index.html" style="margin-left: 20px; color: #0071e3; text-decoration: none; font-size: 17px;">方法论框架 &rarr;</a>
     </div>
   </div>
 
+  <!-- Metrics Dashboard -->
+  <div class="metrics-strip">
+    <h3>Key Business Impact &middot; 2025</h3>
+    <div class="metrics-grid">
+      <div class="metric-item">
+        <div class="value">+3.0%</div>
+        <div class="label">CL 峰值回收率提升<br>(Avg +2.3%)</div>
+      </div>
+      <div class="metric-item">
+        <div class="value purple">+5.3%</div>
+        <div class="label">BNPL 峰值回收率提升<br>(Avg +4.6%)</div>
+      </div>
+      <div class="metric-item">
+        <div class="value green">+104%</div>
+        <div class="label">M2+ 回收绝对值<br>同比增长</div>
+      </div>
+      <div class="metric-item">
+        <div class="value green">+40%</div>
+        <div class="label">ROI 增长<br>(体量增长 80%)</div>
+      </div>
+      <div class="metric-item">
+        <div class="value">7</div>
+        <div class="label">业务线覆盖<br>(4 条 0→1)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Star Products -->
   <div class="showcase" id="showcase">
     <h3 class="section-title">Star Products</h3>
     <div class="card-grid">
-      <!-- Asset 1: Inspector -->
       <div class="card">
         <span class="tag">AI Agent</span>
         <h3>智能巡检助手</h3>
@@ -218,10 +340,9 @@
           drill down to Channel/Team/RiskLevel.
           Output: Markdown Report with Root Cause.
         </div>
-        <a href="wiki.html#inspector" class="card-link">查看完整 Prompt 与逻辑 &rarr;</a>
+        <a href="cases/index.html#inspector" class="card-link">查看完整案例 &rarr;</a>
       </div>
 
-      <!-- Asset 2: S0 Engine -->
       <div class="card">
         <span class="tag">Core Engine</span>
         <h3>S0 动态分案引擎</h3>
@@ -235,15 +356,53 @@
           threshold = 0.4 # Cover med risk
           return "Call" if risk_score > threshold else "SMS"
         </div>
-        <a href="blog.html#s0-engine" class="card-link">阅读构建实录 &rarr;</a>
+        <a href="cases/index.html#s0-engine" class="card-link">查看完整案例 &rarr;</a>
       </div>
 
-      <!-- Asset 3: Methodology -->
       <div class="card">
         <span class="tag">Framework</span>
-        <h3>策略 0→1 Playbook</h3>
+        <h3>策略 0&rarr;1 Playbook</h3>
         <p>一套经过跨国业务验证的通用策略构建方法论。从痛点深挖到机制设计，再到 AB 测试验证。已成功复用于 OFW 绩效、PK 机制、新国别冷启动等多个场景。</p>
-        <a href="wiki.html#methodology" class="card-link">查看方法论详情 &rarr;</a>
+        <a href="methodology/index.html" class="card-link">查看方法论详情 &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Business Lines -->
+  <div class="biz-section">
+    <h3 class="section-title" style="margin-bottom: 40px;">多元化业务版图 (7 Business Lines)</h3>
+    <div class="biz-grid">
+      <div class="biz-card">
+        <span class="biz-tag-core">Core I</span>
+        <span class="biz-icon">💰</span>
+        <h4 class="biz-title">Cash Loan (现金贷)</h4>
+        <p class="biz-desc">主力业务。全生命周期策略覆盖，峰值回收率提升 3.0%。贡献核心营收。</p>
+      </div>
+      <div class="biz-card">
+        <span class="biz-tag-core" style="background: #f3e5f5; color: #bf5af2;">Core II</span>
+        <span class="biz-icon">📱</span>
+        <h4 class="biz-title">BNPL (TikTok)</h4>
+        <p class="biz-desc">场景金融 (0-1)。嵌入 TikTok 电商生态，峰值回收率提升 5.3%。</p>
+      </div>
+      <div class="biz-card">
+        <span class="biz-icon">💳</span>
+        <h4 class="biz-title">Credit Card (信用卡)</h4>
+        <p class="biz-desc">精细化客群经营。基于"风险-意愿-能力"的分层策略，实现风险、收益与体验的动态平衡。</p>
+      </div>
+      <div class="biz-card">
+        <span class="biz-icon">🏘️</span>
+        <h4 class="biz-title">Offline (线下产品)</h4>
+        <p class="biz-desc">大额信贷。从全局视角构建风控经营体系：产品侧约束 + 内部差异化 + 外部专业资源。</p>
+      </div>
+      <div class="biz-card">
+        <span class="biz-icon">🔋</span>
+        <h4 class="biz-title">Recharge (充值/虚拟)</h4>
+        <p class="biz-desc">高频小额。极致低成本运营，静默式数字化处置方案。</p>
+      </div>
+      <div class="biz-card">
+        <span class="biz-icon">🚀</span>
+        <h4 class="biz-title">Innovation (0-to-1)</h4>
+        <p class="biz-desc">成功孵化多条新业务线。标准化的冷启动风控框架 (Playbook)。</p>
       </div>
     </div>
   </div>
@@ -255,6 +414,11 @@
       它们是可复用、可验证、可交付的<b>数字资产</b>。
     </p>
   </div>
+
+  <footer style="text-align:center; padding:40px; color:#86868b; font-size:13px; background:#fbfbfd; border-top:1px solid #e5e5e5;">
+    * 数据已进行脱敏处理，仅展示相对趋势与提升幅度。<br>
+    &copy; 2026 Strategy & Agent Lab
+  </footer>
 </body>
 
 </html>

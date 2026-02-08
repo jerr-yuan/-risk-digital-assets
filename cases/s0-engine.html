@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S0 动态分案引擎 | Case Study</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      color: #1d1d1f;
+      background: #fff;
+    }
+
+    header {
+      background: #000;
+      color: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 { margin: 0; font-size: 20px; font-weight: 600; }
+
+    header nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover, header nav a.active { color: #fff; }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 60px;
+      background: linear-gradient(180deg, #1d1d1f 0%, #2d2d2f 100%);
+      color: #fff;
+    }
+
+    .hero .tag {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #0071e3;
+      margin-bottom: 16px;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      line-height: 1.1;
+      font-weight: 600;
+      margin: 0 0 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #a1a1a6;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .metrics-bar {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      padding: 40px 20px;
+      background: #f5f5f7;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .metrics-bar .item {
+      text-align: center;
+    }
+
+    .metrics-bar .value {
+      font-size: 36px;
+      font-weight: 700;
+      color: #0071e3;
+    }
+
+    .metrics-bar .label {
+      font-size: 13px;
+      color: #86868b;
+      margin-top: 4px;
+    }
+
+    .content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .content h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 48px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .content p, .content li {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #424245;
+    }
+
+    .content ul {
+      padding-left: 20px;
+    }
+
+    .code-block {
+      background: #1d1d1f;
+      border-radius: 12px;
+      padding: 24px;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+
+    .code-block pre {
+      color: #e5e5e7;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .code-block .comment { color: #6e6e73; }
+    .code-block .keyword { color: #ff7eb6; }
+    .code-block .string { color: #78dce8; }
+    .code-block .func { color: #a9dc76; }
+
+    .highlight-box {
+      background: #f0f7ff;
+      border-left: 4px solid #0071e3;
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+
+    .highlight-box p {
+      margin: 0;
+      color: #1d1d1f;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 40px;
+      color: #0071e3;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 32px; }
+      .metrics-bar { flex-direction: column; gap: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Strategy & Agent Lab</h1>
+    <nav>
+      <a href="../index.html">产品主页</a>
+      <a href="../achievements.html">业绩成就</a>
+      <a href="index.html" class="active">实战案例</a>
+      <a href="../methodology/index.html">方法论</a>
+      <a href="../portfolio-main.html">作品集</a>
+      <a href="../wiki.html">知识库</a>
+      <a href="../blog.html">深度思考</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="tag">Core Engine</div>
+    <h2>S0 动态分案引擎</h2>
+    <p>基于当天产能与案件风险等级的实时匹配系统。从传统固定规则到动态优化，最大化回收率。</p>
+  </div>
+
+  <div class="metrics-bar">
+    <div class="item">
+      <div class="value">+15%</div>
+      <div class="label">高风险案件触达率提升</div>
+    </div>
+    <div class="item">
+      <div class="value">+40%</div>
+      <div class="label">ROI 增长</div>
+    </div>
+    <div class="item">
+      <div class="value">+80%</div>
+      <div class="label">案量增长（人力仅 +25%）</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h3>1. 业务背景</h3>
+    <p>传统分案采用固定规则（如按逾期天数平均分配），导致：</p>
+    <ul>
+      <li>高风险案件在低产能日（如周末）积压</li>
+      <li>高能效催收员处理低价值案件，产能浪费</li>
+      <li>无法根据当日实际情况动态调整</li>
+    </ul>
+
+    <h3>2. 解决方案：动态匹配算法</h3>
+    <div class="highlight-box">
+      <p><strong>核心逻辑</strong>：基于当天的产能 (Capacity) 与案件风险等级 (Roll Rate Prediction) 进行实时匹配，最大化回收率。</p>
+    </div>
+
+    <div class="code-block">
+      <pre><span class="keyword">def</span> <span class="func">dynamic_assignment</span>(cases, agents, strategy_params):
+    <span class="string">"""
+    cases: 待分案池 (包含 risk_score, unpaid_amount)
+    agents: 上线催收员 (包含 skill_score, capacity)
+    strategy_params: 策略参数 (风险阈值, 负荷上限)
+    """</span>
+
+    <span class="comment"># Step 1: 案件分层 (Segmentation)</span>
+    high_risk = cases.filter(risk_score > params[<span class="string">'threshold'</span>])
+    low_risk  = cases.filter(risk_score <= params[<span class="string">'threshold'</span>])
+
+    <span class="comment"># Step 2: 坐席分级 (Agent Ranking)</span>
+    senior = agents.filter(skill >= <span class="string">'Senior'</span>).sort_by(<span class="string">'capacity'</span>, desc=<span class="keyword">True</span>)
+    junior = agents.filter(skill < <span class="string">'Senior'</span>)
+
+    <span class="comment"># Step 3: 优化匹配 — 高风险 → 高能力</span>
+    <span class="keyword">for</span> agent <span class="keyword">in</span> senior:
+        capacity = agent.capacity * params[<span class="string">'load_factor'</span>]
+        assignments[agent.id] = high_risk.pop(top=capacity)
+
+    <span class="comment"># Step 4: 剩余 → 均匀分配</span>
+    distribute_evenly(low_risk, junior)
+
+    <span class="keyword">return</span> assignments</pre>
+    </div>
+
+    <h3>3. 关键创新</h3>
+    <ul>
+      <li><strong>动态灰度</strong>：全年灰度测试发现，高风险期应加大催收强度，低风险期应降低强度（非"一刀切"固定策略）</li>
+      <li><strong>人力预估</strong>：通过风险预测模型提前 T+7 天预估所需人力，联动外包/内催灵活调配</li>
+      <li><strong>周末/节假日自适应</strong>：自动降低分案量，避免积压</li>
+    </ul>
+
+    <h3>4. 业务价值</h3>
+    <ul>
+      <li><strong>回收率</strong>：全业务线回收率达历史最高水平，主力产品 CL 峰值 +3.0%，TT +5.3%</li>
+      <li><strong>人效</strong>：案量增长 80%，人力仅增长 25%</li>
+      <li><strong>S0 优化</strong>：S0 阶段人力消耗较一年前大幅下降</li>
+    </ul>
+
+    <a href="index.html" class="back-link">&larr; 返回全部案例</a>
+  </div>
+
+  <footer style="text-align:center; padding:40px; color:#86868b; font-size:13px; border-top:1px solid #e5e5e5;">
+    &copy; 2026 袁鹏 · Strategy & Agent Lab
+  </footer>
+</body>
+</html>
