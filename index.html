@@ -483,43 +483,19 @@
     <h3 class="section-title">Star Products</h3>
     <div class="card-grid">
 
-      <!-- Smart Inspector — pipeline visualization -->
+      <!-- Smart Inspector -->
       <div class="card">
         <span class="tag">AI Agent &middot; Production</span>
         <h3>Smart Inspector 智能巡检</h3>
-        <p>基于 LLM 的多维归因系统。自动遍历客群/产品/渠道/组织层级，将风险异动定位从「天级」缩短至「分钟级」。</p>
-        <div class="inspector-pipeline">
-          <div class="pipeline-step">
-            <div class="pipeline-timeline">
-              <div class="pipeline-dot"></div>
-              <div class="pipeline-line"></div>
-            </div>
-            <div class="pipeline-content">
-              <span class="pipeline-time">08:00</span>
-              <div class="pipeline-title">Data Fetch &mdash; 多源数据采集</div>
-              <p class="pipeline-desc">SQL 自动拉取 T-1 全维度运营数据</p>
-            </div>
+        <p>传统日报只告诉你「M1 回收率跌了」，Smart Inspector 告诉你「为什么跌了」。自动遍历客群、渠道、组织、产品四个维度，定位异动根因，将团队精力从「做数」释放到「决策」。</p>
+        <div style="margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div style="background: #f5f5f7; border-radius: 8px; padding: 12px; font-size: 12px;">
+            <div style="color: #0071e3; font-weight: 600; margin-bottom: 4px;">客群 &times; 渠道</div>
+            <span style="color: #86868b;">风险等级 / 金额段 / 触达工具</span>
           </div>
-          <div class="pipeline-step">
-            <div class="pipeline-timeline">
-              <div class="pipeline-dot orange"></div>
-              <div class="pipeline-line"></div>
-            </div>
-            <div class="pipeline-content">
-              <span class="pipeline-time">08:30</span>
-              <div class="pipeline-title">LLM Reasoning &mdash; 异动归因</div>
-              <p class="pipeline-desc">基线对比 &rarr; 阈值触发 &rarr; 维度下钻 &rarr; 根因定位</p>
-            </div>
-          </div>
-          <div class="pipeline-step">
-            <div class="pipeline-timeline">
-              <div class="pipeline-dot green"></div>
-            </div>
-            <div class="pipeline-content">
-              <span class="pipeline-time">09:00</span>
-              <div class="pipeline-title">Auto Report &mdash; 报告分发</div>
-              <p class="pipeline-desc">Markdown 归因报告 &rarr; 飞书/钉钉群推送</p>
-            </div>
+          <div style="background: #f5f5f7; border-radius: 8px; padding: 12px; font-size: 12px;">
+            <div style="color: #ff9500; font-weight: 600; margin-bottom: 4px;">组织 &times; 产品</div>
+            <span style="color: #86868b;">内催/外包 / 7 条业务线</span>
           </div>
         </div>
         <a href="cases/index.html#inspector" class="card-link">查看完整案例 &rarr;</a>

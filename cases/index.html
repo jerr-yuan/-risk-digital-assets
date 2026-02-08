@@ -232,40 +232,40 @@
 
   <div class="container">
 
-    <!-- Case 1: Collection Inspection Agent -->
+    <!-- Case 1: Smart Inspector -->
     <a id="inspector" class="anchor"></a>
     <div class="case-card">
       <div class="case-info">
-        <div class="case-tag">AI Agent</div>
+        <div class="case-tag">AI Agent &middot; Production</div>
         <h3>Smart Inspector 智能巡检</h3>
-        <p>基于 LLM 的多维自动归因系统。自动遍历客群/产品/渠道/组织层级分析回收率波动根因，从"人肉做数 2 小时"到"归因 5 分钟"，覆盖 90% 常规波动。</p>
-        <div class="case-metrics">
-          <div class="metric">
-            <div class="value">5 min</div>
-            <div class="label">归因分析时间（原 2h）</div>
+        <p>传统日报只能展示「发生了什么」，无法回答「为什么」。团队每天大量精力消耗在基础数据提取与报表制作上，真正用于决策的时间很少。</p>
+        <p style="margin-top: 12px;">Smart Inspector 自动化完成多维数据遍历与异动归因，将团队精力从<strong>「做数」释放到「决策」</strong>。</p>
+      </div>
+      <div class="case-visual" style="padding: 30px 35px;">
+        <div style="color: #fff; font-size: 13px; line-height: 1.7;">
+          <div style="color: #86868b; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;">Inspection Dimensions</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
+              <div style="color: #0071e3; font-weight: 600; font-size: 12px; margin-bottom: 6px;">客群维度</div>
+              <div style="color: #a1a1a6; font-size: 12px;">新客/老客 &times; 风险等级<br>金额段 &times; 期限</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
+              <div style="color: #34c759; font-weight: 600; font-size: 12px; margin-bottom: 6px;">渠道维度</div>
+              <div style="color: #a1a1a6; font-size: 12px;">电话 / SMS / WABA<br>IVR / AI Bot</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
+              <div style="color: #ff9500; font-weight: 600; font-size: 12px; margin-bottom: 6px;">组织维度</div>
+              <div style="color: #a1a1a6; font-size: 12px;">内催组别 / 外包团队<br>经办人绩效</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.06); border-radius: 8px; padding: 14px;">
+              <div style="color: #bf5af2; font-weight: 600; font-size: 12px; margin-bottom: 6px;">产品维度</div>
+              <div style="color: #a1a1a6; font-size: 12px;">CL / BNPL / CC<br>Offline / Recharge</div>
+            </div>
           </div>
-          <div class="metric">
-            <div class="value">90%</div>
-            <div class="label">波动归因覆盖率</div>
+          <div style="margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.1); color: #a1a1a6; font-size: 12px;">
+            <span style="color: #0071e3;">&darr;</span> 基线对比 &rarr; 阈值触发 &rarr; 维度下钻 &rarr; 根因定位 &rarr; 报告推送
           </div>
         </div>
-      </div>
-      <div class="case-visual">
-        <div class="diagram">
-08:00  SQL Fetcher
-  │    ┌──────────────┐
-  ├───▶│ T-1 运营数据  │
-  │    └──────┬───────┘
-  │           │
-09:00  LLM Reasoning
-  │    ┌──────▼───────┐
-  ├───▶│ 异动分析引擎  │
-  │    └──────┬───────┘
-  │           │
-09:05  Auto Report
-       ┌──────▼───────┐
-       │ 飞书/钉钉群发  │
-       └──────────────┘</div>
       </div>
     </div>
 
