@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Assets | 袁鹏 · 贷后策略与 AI 实践</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --primary: #0071e3;
+      --primary-light: #e3f2fd;
+      --primary-dark: #005bb5;
+      --accent-purple: #bf5af2;
+      --accent-green: #34c759;
+      --surface: #ffffff;
+      --surface-alt: #f5f5f7;
+      --surface-dark: #1d1d1f;
+      --text: #1d1d1f;
+      --text-light: #86868b;
+      --text-muted: #a1a1a6;
+      --border: #e5e5e5;
+      --border-light: #f0f0f0;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+      --shadow-md: 0 8px 32px rgba(0,0,0,0.08);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,0.12);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text); background: var(--surface); line-height: 1.7;
+    }
+
+    /* Nav */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      padding: 0 40px; height: 56px; display: flex; justify-content: space-between; align-items: center;
+    }
+    header .logo { font-size: 16px; font-weight: 600; color: #fff; white-space: nowrap; }
+    header nav { display: flex; gap: 4px; }
+    header nav a {
+      color: #ccc; text-decoration: none; font-size: 13px; font-weight: 500;
+      padding: 6px 16px; border-radius: 20px; transition: var(--transition); white-space: nowrap;
+    }
+    header nav a:hover, header nav a.active { color: #fff; background: rgba(255,255,255,0.12); }
+
+    /* Hero */
+    .hero {
+      text-align: center; padding: 72px 24px 56px;
+      background: linear-gradient(170deg, #f8faff 0%, #eaf0fa 40%, #e3ecf8 100%);
+    }
+    .hero h2 {
+      font-size: clamp(34px, 4.5vw, 52px); line-height: 1.1; font-weight: 700;
+      margin-bottom: 14px; letter-spacing: -0.02em;
+    }
+    .hero h2 .accent {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero p {
+      font-size: clamp(15px, 1.8vw, 18px); color: var(--text-light);
+      max-width: 600px; margin: 0 auto; line-height: 1.6;
+    }
+
+    /* Container */
+    .container { max-width: 1060px; margin: 0 auto; padding: 64px 24px; }
+
+    /* Section Title */
+    .section-tag {
+      display: block; text-align: center; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; text-align: center;
+      margin-bottom: 56px; letter-spacing: -0.01em;
+    }
+
+    /* Showcase Cards (Methodology) */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 32px; margin-bottom: 80px; }
+    @media (max-width: 600px) { .card-grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--surface); border-radius: var(--radius); padding: 40px;
+      border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);
+      transition: var(--transition); display: flex; flex-direction: column;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
+    .card .tag {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; margin-bottom: 16px; color: var(--primary);
+    }
+    .card h3 { font-size: 24px; font-weight: 700; margin-bottom: 16px; }
+    .card ul { list-style: none; padding: 0; }
+    .card li {
+      font-size: 14px; color: var(--text-light); line-height: 1.6;
+      margin-bottom: 12px; position: relative; padding-left: 20px;
+    }
+    .card li::before {
+      content: '→'; position: absolute; left: 0; color: var(--primary); font-weight: 700;
+    }
+    .card-cta-wrap { margin-top: 20px; }
+    .card-cta {
+      display: inline-block;
+      padding: 10px 20px;
+      background: var(--primary-light);
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 999px;
+      transition: var(--transition);
+    }
+    .card-cta:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Biz Grid (Atomic Skills) */
+    .biz-section { padding: 80px 24px; background: var(--surface-alt); }
+    .biz-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px; max-width: 1060px; margin: 0 auto;
+    }
+    .biz-card {
+      background: var(--surface); border-radius: var(--radius); padding: 28px;
+      border: 1px solid var(--border-light); transition: var(--transition);
+    }
+    .biz-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: transparent; }
+    .biz-icon { font-size: 24px; margin-bottom: 12px; display: block; }
+    .biz-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .biz-desc { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+    /* Footer */
+    footer {
+      text-align: center; padding: 40px 24px; color: var(--text-light);
+      font-size: 13px; background: var(--surface-alt); border-top: 1px solid var(--border);
+    }
+
+    /* Animation */
+    .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">袁鹏 · 贷后策略与 AI 实践</div>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="achievements.html">业绩成就</a>
+      <a href="cases/index.html">实战案例</a>
+      <a href="methodology/index.html">方法论</a>
+      <a href="skills.html" class="active">Skill Assets</a>
+      <a href="1.resume/resume-v4.16.html" target="_blank">简历 &#8599;</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2 class="animate-on-scroll">Skill <span class="accent">Assets</span></h2>
+    <p class="animate-on-scroll">沉淀为可复用的策略数字化资产，支撑业务跨越式增长。</p>
+  </section>
+
+  <div class="container">
+    <span class="section-tag animate-on-scroll">Core Methodology</span>
+    <h3 class="section-title animate-on-scroll">核心方法论资产</h3>
+
+    <div class="card-grid">
+      <!-- Strategy Playbook -->
+      <div class="card animate-on-scroll">
+        <span class="tag">The Playbook</span>
+        <h3>策略从 0 到 1 方法论</h3>
+        <ul>
+          <li><strong>诊断与定调</strong>：痛点与根因梳理，以及用少量关键词锚定战略目标。</li>
+          <li><strong>机制设计</strong>：按业务关键维度做分层与差异化，明确核心抓手与合规边界。</li>
+          <li><strong>假设验证</strong>：用对照实验验证假设，并用 ROI 与盈亏平衡做商业可行性测算。</li>
+          <li><strong>原子化执行</strong>：将战略拆解为可执行、可验收的单一任务。</li>
+        </ul>
+      </div>
+
+      <!-- Data SOP -->
+      <div class="card animate-on-scroll">
+        <span class="tag">Execution Standard</span>
+        <h3>数据分析师标准 SOP</h3>
+        <ul>
+          <li><strong>需求对齐</strong>：管理意图对齐、成功标准量化、所有约束条件的书面化确认。</li>
+          <li><strong>可行性评估</strong>：主从数据源识别、字段可用性检查与数据质量初步评估报告。</li>
+          <li><strong>Baseline 建立</strong>：现状探查、基于“现状不满意”的共识定义 Baseline 验证规则。</li>
+          <li><strong>工程化实现</strong>：在关键节点设置评审门禁，确保方案逻辑清晰、可验证、可回溯。</li>
+        </ul>
+      </div>
+
+      <!-- Business Sense -->
+      <div class="card animate-on-scroll">
+        <span class="tag">Business Intelligence</span>
+        <h3>业务 Sense 沉淀</h3>
+        <ul>
+          <li><strong>成熟度逻辑 (The Maturity Logic)</strong>：理解指标滞后性，实施强制窗口控制以避免误读。</li>
+          <li><strong>三维穿透归因</strong>：从横向批次、纵向时间、切片维度做归因，形成可复用的分析框架。</li>
+          <li><strong>目标原子化</strong>：将日目标拆解至小时、金额段、厂商级别，消除管理的“黑盒”问题。</li>
+          <li><strong>话术与结论模板</strong>：将分析结论固化为业务语言，直接驱动决策。</li>
+        </ul>
+      </div>
+
+      <!-- Framework -->
+      <div class="card animate-on-scroll">
+        <span class="tag">AI Collaboration</span>
+        <h3>风控策略四类工作框架</h3>
+        <ul>
+          <li><strong>角色矩阵</strong>：明确日常监控、策略开发、效果追踪、临时需求四类场景。</li>
+          <li><strong>人机协作边界</strong>：明确人在目标与规则定义、Agent 在规模化执行与测算中的分工。</li>
+          <li><strong>上游决策价值</strong>：人的不可替代性在于目标定义、归因判断与迭代方向决策。</li>
+        </ul>
+      </div>
+
+      <!-- Agent Collaboration Rules -->
+      <div class="card animate-on-scroll">
+        <span class="tag">Rules</span>
+        <h3>与 Agent 协作规则</h3>
+        <ul>
+          <li><strong>先讨论再执行</strong>：复述需求、给出方案选项、确认细节后再动手，避免返工。</li>
+          <li><strong>进度与确认</strong>：长任务分阶段同步进度。</li>
+          <li><strong>版本与修改</strong>：迭代时新建版本不覆盖；在稳定版上只增不改，保护可追溯性。</li>
+          <li><strong>验证标准</strong>：数据类产出以金标准对账（如差距为 0），脚本执行结果可被用户直接看到。</li>
+          <li><strong>签名确认</strong>：每次回答结尾签名确认，保证规则被遵守。—— Mr.Yuan</li>
+        </ul>
+      </div>
+
+      <!-- AI Teaching -->
+      <div class="card animate-on-scroll">
+        <span class="tag">AI Teaching</span>
+        <h3>AI 教学与分享</h3>
+        <ul>
+          <li><strong>风险团队内部 AI Agent 分享教学</strong>：在团队内进行了一次 AI Agent 分享与教学，以「哈利波特」主题落地演示，含 Remotion 片头与互动式分享结构。</li>
+        </ul>
+        <p class="card-cta-wrap"><a href="../../../12-agent_finalize/11-AI_Sharing/AI_Share_Portable_20260209/AI_Share_HarryPotter_V4%20-%20%E5%89%AF%E6%9C%AC.html" target="_blank" rel="noopener" class="card-cta">查看分享页 &rarr;</a></p>
+      </div>
+    </div>
+  </div>
+
+  <section class="biz-section">
+    <span class="section-tag animate-on-scroll">Practical Skills</span>
+    <h3 class="section-title animate-on-scroll">核心实战技能</h3>
+    <div class="biz-grid">
+      <div class="biz-card animate-on-scroll">
+        <span class="biz-icon">🔍</span>
+        <h4 class="biz-title">探数与验数</h4>
+        <p class="biz-desc">生命周期还原底表构建，多表口径一致性校验与样本穿透分析。</p>
+      </div>
+      <div class="biz-card animate-on-scroll">
+        <span class="biz-icon">📈</span>
+        <h4 class="biz-title">规则化定价</h4>
+        <p class="biz-desc">基于 PAVA 保序回归的阶梯定价模型，输出可解释的激励曲线。</p>
+      </div>
+      <div class="biz-card animate-on-scroll">
+        <span class="biz-icon">🔒</span>
+        <h4 class="biz-title">约束校验</h4>
+        <p class="biz-desc">ROI 达标、单价区间、增速平滑等多重约束在迭代中自动闭环校验。</p>
+      </div>
+      <div class="biz-card animate-on-scroll">
+        <span class="biz-icon">🔄</span>
+        <h4 class="biz-title">可复用闭环</h4>
+        <p class="biz-desc">逻辑参数化配置，支持多业务线快速复用与多版本差异化对比。</p>
+      </div>
+      <div class="biz-card animate-on-scroll">
+        <span class="biz-icon">📊</span>
+        <h4 class="biz-title">自动报告生成</h4>
+        <p class="biz-desc">核心指标与异常波动自动预警，将分析师从重复报表中彻底解放。</p>
+      </div>
+      <div class="biz-card animate-on-scroll">
+        <span class="biz-icon">📖</span>
+        <h4 class="biz-title">数字化字典</h4>
+        <p class="biz-desc">业务口径的标准化描述，让 Agent 能够精准读数并理解业务意图。</p>
+      </div>
+      <div class="biz-card animate-on-scroll">
+        <span class="biz-icon">📐</span>
+        <h4 class="biz-title">多维监控与归因下钻</h4>
+        <p class="biz-desc">按客群、渠道、产品等维度设置监控阈值，异动时自动下钻归因，快速定位根因。</p>
+      </div>
+      <div class="biz-card animate-on-scroll">
+        <span class="biz-icon">📋</span>
+        <h4 class="biz-title">归因与口径统一</h4>
+        <p class="biz-desc">风险、回收、过程三条线口径统一，固化的归因检查清单与异常规则，支撑日报周报产出。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 袁鹏 &middot; 贷后策略与 AI 实践
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el, i) => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
