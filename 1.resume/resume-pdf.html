@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>袁鹏 - 贷后策略资深专家简历 v4.16</title>
+  <title>袁鹏 - 简历 PDF 一页版</title>
+  <!-- 使用方式：浏览器打开后 Ctrl+P → 另存为 PDF，或运行 1.resume/pdf-generate 下的 npm 脚本生成 -->
+  <!-- 使用：浏览器打开后 Ctrl+P → 另存为 PDF，或运行 1.resume/pdf-generate 下的脚本生成 -->
   <style>
+    /* 屏幕预览：与主简历一致 */
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       font-size: 13px;
@@ -18,183 +20,67 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       border-radius: 8px;
     }
+    html { background-color: #f2f2f7; min-height: 100%; }
+    h1 { font-size: 26px; text-align: center; margin-bottom: 4px; color: #1d1d1f; }
+    .contact { text-align: center; margin-bottom: 15px; color: #666; font-size: 13px; }
+    .contact-email { margin-bottom: 2px; }
+    h2 { font-size: 18px; border-bottom: 2px solid #0071e3; padding-bottom: 4px; margin: 15px 0 10px; color: #1d1d1f; }
+    h3 { font-size: 13px; margin: 12px 0 6px; color: #1d1d1f; font-weight: 600; }
+    .company-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px; margin-top: 12px; margin-bottom: 6px; }
+    .company-row:first-of-type { margin-top: 0; }
+    a { color: #0071e3; text-decoration: none; }
+    .meta { color: #86868b; font-size: 12px; font-style: italic; }
+    ul { padding-left: 20px; margin: 5px 0; }
+    li { margin-bottom: 4px; }
+    body, li, p, .company-row span { overflow-wrap: break-word; word-break: break-word; }
+    .highlight { font-weight: 600; color: #000; }
+    .section { margin-bottom: 20px; }
+    .edu-row { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr) minmax(0, 95px); gap: 10px; align-items: baseline; font-size: 13px; }
+    .edu-row .edu-date { justify-self: end; white-space: nowrap; }
+    .edu-row span:nth-child(2) { min-width: 0; }
+    .edu-row .meta { font-size: 12px; }
+    .no-print { margin-bottom: 15px; }
 
-    html {
-      background-color: #f2f2f7;
-      min-height: 100%;
-    }
-
-    h1 {
-      font-size: 26px;
-      text-align: center;
-      margin-bottom: 4px;
-      color: #1d1d1f;
-    }
-
-    .contact {
-      text-align: center;
-      margin-bottom: 15px;
-      color: #666;
-      font-size: 13px;
-    }
-
-    h2 {
-      font-size: 18px;
-      border-bottom: 2px solid #0071e3;
-      padding-bottom: 4px;
-      margin: 15px 0 10px;
-      color: #1d1d1f;
-      display: flex;
-      align-items: center;
-    }
-
-    h3 {
-      font-size: 13px;
-      margin: 12px 0 6px;
-      color: #1d1d1f;
-      font-weight: 600;
-    }
-
-    .company-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-top: 12px;
-      margin-bottom: 6px;
-    }
-    .company-row:first-of-type {
-      margin-top: 0;
-    }
-
-    a {
-      color: #0071e3;
-      text-decoration: none;
-    }
-
-    .meta {
-      color: #86868b;
-      font-size: 12px;
-      font-style: italic;
-    }
-
-    ul {
-      padding-left: 20px;
-      margin: 5px 0;
-    }
-
-    li {
-      margin-bottom: 4px;
-    }
-
-    body, li, p, .company-row span {
-      overflow-wrap: break-word;
-      word-break: break-word;
-    }
-    .edu-row span:nth-child(2) {
-      overflow-wrap: normal;
-      word-break: normal;
-    }
-
-    .highlight {
-      font-weight: 600;
-      color: #000;
-    }
-
-    .section {
-      margin-bottom: 20px;
-    }
-
-    .edu-row {
-      display: grid;
-      grid-template-columns: minmax(0, 220px) minmax(0, 1fr) minmax(0, 95px);
-      gap: 10px;
-      align-items: baseline;
-      font-size: 13px;
-    }
-    .edu-row .edu-date {
-      justify-self: end;
-      white-space: nowrap;
-    }
-    .edu-row span:nth-child(2) {
-      min-width: 0;
-    }
-    .edu-row .meta {
-      font-size: 12px;
-    }
-
-    .no-print {
-      margin-bottom: 15px;
-    }
-
-    @media screen and (max-width: 768px) {
-      body { padding: 20px 24px; margin: 12px auto; }
-      h1 { font-size: 22px; }
-      h2 { font-size: 16px; margin: 12px 0 8px; }
-      .edu-row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
-      .edu-row .edu-date { justify-self: start; }
-    }
-
-    @media screen and (max-width: 480px) {
-      body { padding: 16px 16px; margin: 8px auto; }
-      h1 { font-size: 20px; }
-      .contact { font-size: 12px; }
-      h2 { font-size: 15px; margin: 10px 0 6px; }
-      h3 { font-size: 12px; }
-      ul { padding-left: 16px; }
-      .company-row { flex-direction: column; align-items: flex-start; gap: 2px; }
-    }
-
+    /* 打印：一页 A4，结合 pdf-01 的宽松布局 + 新版清晰字号，留白适中 */
     @media print {
       @page { size: A4; margin: 10mm; }
-      html { background: #fff; }
+      html, body { margin: 0 !important; padding: 0 !important; max-width: none !important; box-shadow: none !important; border-radius: 0 !important; background: #fff !important; }
       .no-print { display: none !important; }
       body {
-        margin: 0;
-        padding: 12px 36px;
-        box-shadow: none;
-        max-width: 100%;
-        font-size: 12px;
-        line-height: 1.52;
+        font-size: 11.5px !important;
+        line-height: 1.48 !important;
+        padding: 12px 34px !important;
       }
-      h1 { font-size: 22px; margin-bottom: 4px; }
-      .contact { font-size: 12px; margin-bottom: 8px; }
-      h2 { font-size: 15px; margin: 10px 0 6px; padding-bottom: 3px; }
-      h3 { font-size: 12px; margin: 8px 0 4px; }
-      .section { margin-bottom: 12px; }
-      ul { padding-left: 18px; margin: 4px 0; }
-      li { margin-bottom: 3px; }
-      .company-row { margin-top: 8px; margin-bottom: 4px; }
-      .company-row:first-of-type { margin-top: 0; }
-      body, li, p, .company-row span { overflow-wrap: break-word; word-break: break-word; }
-      .edu-row {
-        grid-template-columns: minmax(0, 180px) minmax(240px, 1fr) minmax(0, 82px);
-        font-size: 12px;
-      }
-      .edu-row .meta { font-size: 11px; }
-      .edu-row span:nth-child(2) { min-width: 0; white-space: nowrap; }
+      h1 { font-size: 20px !important; margin: 0 0 4px !important; }
+      .contact { font-size: 11.5px !important; margin: 0 0 8px !important; }
+      .contact-email { margin-bottom: 2px !important; }
+      .contact a { color: #0071e3 !important; }
+      h2 { font-size: 14px !important; margin: 10px 0 5px !important; padding-bottom: 3px !important; border-bottom-width: 2px !important; }
+      h3 { font-size: 11.5px !important; margin: 7px 0 4px !important; }
+      .section { margin-bottom: 10px !important; }
+      .company-row { margin-top: 7px !important; margin-bottom: 4px !important; font-size: 11.5px !important; }
+      .company-row:first-of-type { margin-top: 0 !important; }
+      .meta { font-size: 10.5px !important; }
+      ul { padding-left: 18px !important; margin: 3px 0 !important; }
+      li { margin-bottom: 2.5px !important; font-size: 11.5px !important; }
+      ul ul { padding-left: 16px !important; margin: 2px 0 !important; }
+      .edu-row { grid-template-columns: minmax(0, 175px) minmax(220px, 1fr) minmax(0, 80px) !important; gap: 8px !important; font-size: 11.5px !important; margin-top: 4px !important; }
+      .edu-row .meta { font-size: 10.5px !important; }
+      .edu-row .edu-date { white-space: nowrap !important; }
     }
   </style>
 </head>
-
 <body>
   <div class="no-print">
-    <a href="../index.html"
-      style="display: inline-flex; align-items: center; color: #666; font-size: 13px; font-weight: 500; padding: 6px 12px; background: #f5f5f7; border-radius: 6px; transition: all 0.2s;">
-      <span style="margin-right: 6px;">&larr;</span> 返回数字资产站
-    </a>
+    <a href="../index.html" style="display: inline-flex; align-items: center; color: #666; font-size: 13px; font-weight: 500; padding: 6px 12px; background: #f5f5f7; border-radius: 6px;">&larr; 返回数字资产站</a>
   </div>
-  
+
   <h1>袁鹏</h1>
-  <p class="contact" style="margin-bottom: 2px;">401887683@qq.com &middot; (+86) 17782314266</p>
-  <p class="contact" style="margin-top: 0; margin-bottom: 15px;">
-    个人主页：<a href="https://jerr-yuan.github.io/-risk-digital-assets/" target="_blank" rel="noopener">https://jerr-yuan.github.io/-risk-digital-assets/</a>
-  </p>
+  <p class="contact contact-email">401887683@qq.com &middot; (+86) 17782314266</p>
+  <p class="contact" style="margin-top: 0; margin-bottom: 15px;">个人主页：<a href="https://jerr-yuan.github.io/-risk-digital-assets/" target="_blank" rel="noopener">https://jerr-yuan.github.io/-risk-digital-assets/</a></p>
 
   <div class="section">
     <h2>工作经历</h2>
-    
     <p class="company-row"><span><strong>信也科技</strong> &middot; 贷后策略负责人 &middot; 菲律宾事业部</span><span class="meta">2024.08 - 至今 · 上海</span></p>
     <ul>
       <li><span class="highlight">业务贡献</span>：负责菲律宾贷后策略体系与目标达成。
@@ -219,7 +105,6 @@
         </ul>
       </li>
     </ul>
-
     <p class="company-row"><span><strong>度小满金融</strong> &middot; 风险策略分析师 &middot; 风险部</span><span class="meta">2020.07 - 2024.07 · 北京</span></p>
     <ul>
       <li><span class="highlight">方法论沉淀</span>：<strong>构建</strong>了基于 <strong>风险-成本-客诉</strong> 动态平衡的决策框架；<strong>沉淀</strong>了标准化的数据分析与复杂项目管理方法论。</li>
@@ -231,14 +116,12 @@
 
   <div class="section">
     <h2>主要项目</h2>
-    
     <h3>智能巡检体系建设（Agent 应用）</h3>
     <ul>
       <li><span class="highlight">结果指标导向</span>：缩短做数、看数、归因、决策、追踪、结果改善流程。</li>
-      <li><span class="highlight">体系结构</span>风险、回收、过程，自动化遍历多维数据（客群/产品/渠道/组织层级），实现风险指标的自动预警与归因。</li>
+      <li><span class="highlight">基于三条线构建</span>：风险、回收、过程，自动化遍历多维数据（客群/产品/渠道/组织层级），实现风险指标的自动预警与归因。</li>
       <li><span class="highlight">亮点</span>：覆盖维度全；归因结构清晰；直接输出决策；个人中台产品，可快速复制。详见个人站智能巡检项目。</li>
     </ul>
-    
     <h3>差异化运营体系建设</h3>
     <ul>
       <li><span class="highlight">分案策略</span>：基于客户资质与资源盘点优化资源配置；重构人案匹配逻辑和分案逻辑。</li>
@@ -269,5 +152,4 @@
     </ul>
   </div>
 </body>
-
 </html>

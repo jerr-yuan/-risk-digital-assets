@@ -134,6 +134,33 @@
     .bar-fill.highlight-purple { background: var(--accent-purple); }
     .metric-note { font-size: 13px; color: var(--text-light); margin-top: 16px; line-height: 1.6; }
 
+    /* 看全年回收曲线 按钮 */
+    .chart-trigger-btn {
+      margin-top: 12px; padding: 6px 14px; font-size: 12px; font-weight: 500;
+      color: var(--primary); background: var(--primary-light); border: 1px solid rgba(0,113,227,0.3);
+      border-radius: 20px; cursor: pointer; transition: var(--transition);
+    }
+    .chart-trigger-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* 弹窗：全年回收曲线 */
+    .chart-modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+      display: none; align-items: center; justify-content: center; z-index: 9999; padding: 24px;
+    }
+    .chart-modal-overlay.is-open { display: flex; }
+    .chart-modal {
+      width: 100%; max-width: 900px; max-height: 90vh; background: var(--surface);
+      border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 24px; position: relative;
+    }
+    .chart-modal .chart-modal-close {
+      position: absolute; top: 16px; right: 16px; width: 36px; height: 36px;
+      border: none; background: var(--surface-alt); border-radius: 50%;
+      font-size: 20px; line-height: 1; color: var(--text-light); cursor: pointer; transition: var(--transition);
+    }
+    .chart-modal .chart-modal-close:hover { background: var(--border); color: var(--text); }
+    .chart-modal h3 { font-size: 18px; margin-bottom: 16px; text-align: center; color: var(--text); }
+    .chart-modal-canvas-wrap { height: 380px; position: relative; }
+
     /* Sub-header in metric card */
     .metric-sub { font-weight: 600; margin-bottom: 8px; font-size: 15px; }
 
@@ -258,6 +285,7 @@
                 <div class="bar-label"><span>Average Lift</span><span style="color:var(--primary);font-weight:600">+2.3% Abs.</span></div>
                 <div class="bar-track"><div class="bar-fill highlight" data-width="29"></div></div>
               </div>
+              <button type="button" class="chart-trigger-btn" id="btnCashloanRecoveryCurve" aria-label="看全年回收曲线">看全年回收曲线</button>
             </div>
             <div>
               <div class="metric-sub">TT (BNPL 第二主力)</div>
@@ -414,6 +442,63 @@
       });
       navLinks.forEach(a => a.classList.toggle('active', a.dataset.section === current));
     });
+  </script>
+
+  <!-- 全年回收曲线弹窗 -->
+  <div id="chartRecoveryModal" class="chart-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="chartRecoveryTitle">
+    <div class="chart-modal">
+      <button type="button" class="chart-modal-close" id="chartRecoveryClose" aria-label="关闭">&times;</button>
+      <h3 id="chartRecoveryTitle">Cashloan D30 Recovery Rate</h3>
+      <div class="chart-modal-canvas-wrap"><canvas id="chartRecoveryCanvas"></canvas></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    (function() {
+      var modal = document.getElementById('chartRecoveryModal');
+      var btn = document.getElementById('btnCashloanRecoveryCurve');
+      var closeBtn = document.getElementById('chartRecoveryClose');
+      var canvas = document.getElementById('chartRecoveryCanvas');
+      var recoveryChart = null;
+
+      var labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var rr25 = [70.84, 69.15, 69.85, 69.3, 68.83, 66.79, 66.89, 66.53, 66.71, 68.6, 69.75, 72.31];
+      var rr24 = [68.88, 69.18, 67.48, 67.86, 67.69, 66.18, 65.93, 64.35, 63.4, 65.53, 65.65, 68.86];
+
+      function openModal() {
+        modal.classList.add('is-open');
+        if (recoveryChart) recoveryChart.destroy();
+        recoveryChart = new Chart(canvas, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [
+              { label: '25年回收率', data: rr25, borderColor: '#BB9457', borderWidth: 2.5, tension: 0.4, pointRadius: 4, pointBackgroundColor: '#BB9457' },
+              { label: '24年同期', data: rr24, borderColor: 'rgba(0,0,0,0.2)', borderDash: [5,5], pointRadius: 0, tension: 0.4 }
+            ]
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: { display: true, position: 'top' },
+              tooltip: { enabled: false }
+            },
+            scales: {
+              y: { min: 63, max: 74, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { callback: function() { return ''; } } },
+              x: { grid: { display: false } }
+            }
+          }
+        });
+      }
+      function closeModal() {
+        modal.classList.remove('is-open');
+      }
+      if (btn) btn.addEventListener('click', openModal);
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (modal) modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+    })();
   </script>
 </body>
 </html>
