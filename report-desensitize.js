@@ -1,5 +1,4 @@
 (function(){
-  if(sessionStorage.getItem('_authed')!=='1') return;
   function mask(){
     // 1. KPI cards: replace exact numbers
     document.querySelectorAll('.text-2xl,.text-xl,.text-lg,.oa-kpi-value,.metric-value,.stat-value,.kpi-val').forEach(function(el){
