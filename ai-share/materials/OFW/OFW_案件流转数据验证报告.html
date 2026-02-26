@@ -162,7 +162,7 @@
   <div class="subtitle">构建方法论与数据验证报告</div>
   <div class="meta">
     Author: Mr. Yuan &nbsp;|&nbsp; Generated: 2026-02-10 14:08
-    &nbsp;|&nbsp; 底表: phl_anls.tmp_ofw_dynamic_flow_repay_report_final_v3
+    &nbsp;|&nbsp; 底表: phl_anls.tmp_ofw_***_v3
   </div>
 </div>
 
@@ -179,7 +179,7 @@
 <div class="metric-unit">件</div>
 </div>
   <div class="metric-card">
-<div class="metric-value" style="color:#4F81BD">17448800</div>
+<div class="metric-value" style="color:#4F81BD">17***800</div>
 <div class="metric-label">穿透用户</div>
 <div class="metric-unit">borrower_id</div>
 </div>
@@ -236,8 +236,8 @@
     <table class="data-table">
       <thead><tr><th>表</th><th>用途</th></tr></thead>
       <tbody>
-        <tr><td><code>phl_data.edw_fact_sword_case_allocation_info_snp</code></td><td>原始分案快照表（金标准比对源）</td></tr>
-        <tr><td><code>phl_anls.tmp_ofw_dynamic_flow_repay_report_final_v3</code></td><td>OFW 动态流转底表（验证对象）</td></tr>
+        <tr><td><code>phl_data.edw_fact_***_snp</code></td><td>原始分案快照表（金标准比对源）</td></tr>
+        <tr><td><code>phl_anls.tmp_ofw_***_v3</code></td><td>OFW 动态流转底表（验证对象）</td></tr>
       </tbody>
     </table>
 
@@ -252,7 +252,7 @@
 <div class="card">
   <div class="card-header">三、构建方法论 — 单用户穿透法</div>
   <div class="card-body">
-    <p><strong>核心思路</strong>：先用一个真实用户（borrower_id = <code>17448800</code>）走通全流程，确认每一步逻辑正确；然后再用总量级验证全量数据。</p>
+    <p><strong>核心思路</strong>：先用一个真实用户（borrower_id = <code>17***800</code>）走通全流程，确认每一步逻辑正确；然后再用总量级验证全量数据。</p>
 
     <div class="step-flow">
       <div class="step-box">Step 1<br/>原始快照</div><span class="step-arrow">→</span>
@@ -268,14 +268,14 @@
 <div class="collapse-body"><p>同一 global_case_id 有 8 条记录（多次分案/复案），原始表只记录分案事件，不记录阶段流转。</p>
         <table class="data-table">
 <thead><tr><th>borrower_id</th><th>global_case_id</th><th>list_id</th><th>owner_username</th><th>due_date</th><th>start_time</th><th>end_time</th><th>pay_off_time</th><th>start_dpd</th><th>start_owing_principal</th><th>repay_principal</th></tr></thead>
-<tbody><tr><td>17,448,800</td><td>202508231958964236097142784</td><td>42,350,963</td><td>pom</td><td>2025-08-26 23:59:59</td><td>2025-08-26 10:17:53</td><td>2025-08-27 00:58:57</td><td>None</td><td>0</td><td>0E-15</td><td>0E-15</td></tr>
-<tr><td>17,448,800</td><td>202508271960386494311936000</td><td>42,350,963</td><td>pom</td><td>2025-08-26 23:59:59</td><td>2025-08-27 11:09:42</td><td>2025-08-28 09:48:40</td><td>2025-08-28 09:48:40</td><td>1</td><td>0E-15</td><td>0E-15</td></tr>
-<tr><td>17,448,800</td><td>202510231981040401624956928</td><td>42,350,963</td><td>pom</td><td>2025-10-26 23:59:59</td><td>2025-10-23 08:09:02</td><td>2025-10-27 00:59:01</td><td>None</td><td>-3</td><td>528.000000000000000</td><td>0E-15</td></tr>
-<tr><td>17,448,800</td><td>202510271982492171789926400</td><td>42,350,963</td><td>pom</td><td>2025-10-26 23:59:59</td><td>2025-10-27 07:08:22</td><td>2025-11-01 06:50:47</td><td>None</td><td>1</td><td>528.000000000000000</td><td>528.000000000000000</td></tr>
-<tr><td>17,448,800</td><td>202510271982492171789926400</td><td>42,350,963</td><td>pom</td><td>2025-10-26 23:59:59</td><td>2025-11-01 06:50:47</td><td>2025-11-17 20:40:47</td><td>2025-11-17 20:40:47</td><td>6</td><td>0E-15</td><td>0E-15</td></tr>
-<tr><td>17,448,800</td><td>202601232014372106051444736</td><td>42,350,963</td><td>beapa</td><td>2026-01-26 23:59:59</td><td>2026-01-23 07:08:08</td><td>2026-01-27 00:51:37</td><td>None</td><td>-3</td><td>2728.000000000000000</td><td>0E-15</td></tr>
-<tr><td>17,448,800</td><td>202601272015829992008716288</td><td>42,350,963</td><td>beapa</td><td>2026-01-26 23:59:59</td><td>2026-01-27 12:04:29</td><td>2026-02-02 14:30:54</td><td>None</td><td>1</td><td>2728.000000000000000</td><td>0E-15</td></tr>
-<tr><td>17,448,800</td><td>202601272015829992008716288</td><td>42,350,963</td><td>rodriguez03</td><td>2026-01-26 23:59:59</td><td>2026-02-02 14:30:54</td><td>2999-12-31 23:59:59</td><td>None</td><td>7</td><td>2728.000000000000000</td><td>0E-15</td></tr>
+<tbody><tr><td>17,***,800</td><td>202508***142784</td><td>42,***,963</td><td>Agent_A</td><td>2025-08-26 23:59:59</td><td>2025-08-26 10:17:53</td><td>2025-08-27 00:58:57</td><td>None</td><td>0</td><td>0E-15</td><td>0E-15</td></tr>
+<tr><td>17,***,800</td><td>202508***936000</td><td>42,***,963</td><td>Agent_A</td><td>2025-08-26 23:59:59</td><td>2025-08-27 11:09:42</td><td>2025-08-28 09:48:40</td><td>2025-08-28 09:48:40</td><td>1</td><td>0E-15</td><td>0E-15</td></tr>
+<tr><td>17,***,800</td><td>202510***956928</td><td>42,***,963</td><td>Agent_A</td><td>2025-10-26 23:59:59</td><td>2025-10-23 08:09:02</td><td>2025-10-27 00:59:01</td><td>None</td><td>-3</td><td>XXX.XXXXXXXXXXXXXX0</td><td>0E-15</td></tr>
+<tr><td>17,***,800</td><td>202510***926400</td><td>42,***,963</td><td>Agent_A</td><td>2025-10-26 23:59:59</td><td>2025-10-27 07:08:22</td><td>2025-11-01 06:50:47</td><td>None</td><td>1</td><td>XXX.XXXXXXXXXXXXXX0</td><td>XXX.XXXXXXXXXXXXXX0</td></tr>
+<tr><td>17,***,800</td><td>202510***926400</td><td>42,***,963</td><td>Agent_A</td><td>2025-10-26 23:59:59</td><td>2025-11-01 06:50:47</td><td>2025-11-17 20:40:47</td><td>2025-11-17 20:40:47</td><td>6</td><td>0E-15</td><td>0E-15</td></tr>
+<tr><td>17,***,800</td><td>202601***444736</td><td>42,***,963</td><td>Agent_C</td><td>2026-01-26 23:59:59</td><td>2026-01-23 07:08:08</td><td>2026-01-27 00:51:37</td><td>None</td><td>-3</td><td>X,XXX.XXXXXXXXXXXXXX0</td><td>0E-15</td></tr>
+<tr><td>17,***,800</td><td>202601***716288</td><td>42,***,963</td><td>Agent_C</td><td>2026-01-26 23:59:59</td><td>2026-01-27 12:04:29</td><td>2026-02-02 14:30:54</td><td>None</td><td>1</td><td>X,XXX.XXXXXXXXXXXXXX0</td><td>0E-15</td></tr>
+<tr><td>17,***,800</td><td>202601***716288</td><td>42,***,963</td><td>Agent_D</td><td>2026-01-26 23:59:59</td><td>2026-02-02 14:30:54</td><td>2999-12-31 23:59:59</td><td>None</td><td>7</td><td>X,XXX.XXXXXXXXXXXXXX0</td><td>0E-15</td></tr>
 </tbody>
 </table></div>
 </details>
@@ -286,12 +286,12 @@
 <div class="collapse-body"><p>将多条快照聚合为一条生命周期记录：start_dt（入催日期）、start_dpd（入催DPD=1）、payoff_dt（结清日期）。</p>
         <table class="data-table">
 <thead><tr><th>borrower_id</th><th>global_case_id</th><th>owner_name</th><th>due_date</th><th>start_dt</th><th>start_dpd</th><th>start_owing_principal</th><th>payoff_dt</th><th>end_dt</th></tr></thead>
-<tbody><tr><td>17,448,800</td><td>202510271982492171789926400</td><td>pom</td><td>2025-10-26 23:59:59</td><td>2025-10-27 00:00:00</td><td>1</td><td>0E-15</td><td>2025-11-17 00:00:00</td><td>2025-11-17 00:00:00</td></tr>
-<tr><td>17,448,800</td><td>202508271960386494311936000</td><td>pom</td><td>2025-08-26 23:59:59</td><td>2025-08-27 00:00:00</td><td>1</td><td>0E-15</td><td>2025-08-28 00:00:00</td><td>2025-08-28 00:00:00</td></tr>
-<tr><td>17,448,800</td><td>202508231958964236097142784</td><td>pom</td><td>2025-08-26 23:59:59</td><td>2025-08-26 00:00:00</td><td>0</td><td>0E-15</td><td>NaT</td><td>2025-08-27 00:00:00</td></tr>
-<tr><td>17,448,800</td><td>202601272015829992008716288</td><td>rodriguez03</td><td>2026-01-26 23:59:59</td><td>2026-01-27 00:00:00</td><td>1</td><td>2728.000000000000000</td><td>NaT</td><td>2026-02-02 00:00:00</td></tr>
-<tr><td>17,448,800</td><td>202510231981040401624956928</td><td>pom</td><td>2025-10-26 23:59:59</td><td>2025-10-23 00:00:00</td><td>-3</td><td>528.000000000000000</td><td>NaT</td><td>2025-10-27 00:00:00</td></tr>
-<tr><td>17,448,800</td><td>202601232014372106051444736</td><td>beapa</td><td>2026-01-26 23:59:59</td><td>2026-01-23 00:00:00</td><td>-3</td><td>2728.000000000000000</td><td>NaT</td><td>2026-01-27 00:00:00</td></tr>
+<tbody><tr><td>17,***,800</td><td>202510***926400</td><td>Agent_A</td><td>2025-10-26 23:59:59</td><td>2025-10-27 00:00:00</td><td>1</td><td>0E-15</td><td>2025-11-17 00:00:00</td><td>2025-11-17 00:00:00</td></tr>
+<tr><td>17,***,800</td><td>202508***936000</td><td>Agent_A</td><td>2025-08-26 23:59:59</td><td>2025-08-27 00:00:00</td><td>1</td><td>0E-15</td><td>2025-08-28 00:00:00</td><td>2025-08-28 00:00:00</td></tr>
+<tr><td>17,***,800</td><td>202508***142784</td><td>Agent_A</td><td>2025-08-26 23:59:59</td><td>2025-08-26 00:00:00</td><td>0</td><td>0E-15</td><td>NaT</td><td>2025-08-27 00:00:00</td></tr>
+<tr><td>17,***,800</td><td>202601***716288</td><td>Agent_D</td><td>2026-01-26 23:59:59</td><td>2026-01-27 00:00:00</td><td>1</td><td>X,XXX.XXXXXXXXXXXXXX0</td><td>NaT</td><td>2026-02-02 00:00:00</td></tr>
+<tr><td>17,***,800</td><td>202510***956928</td><td>Agent_A</td><td>2025-10-26 23:59:59</td><td>2025-10-23 00:00:00</td><td>-3</td><td>XXX.XXXXXXXXXXXXXX0</td><td>NaT</td><td>2025-10-27 00:00:00</td></tr>
+<tr><td>17,***,800</td><td>202601***444736</td><td>Agent_C</td><td>2026-01-26 23:59:59</td><td>2026-01-23 00:00:00</td><td>-3</td><td>X,XXX.XXXXXXXXXXXXXX0</td><td>NaT</td><td>2026-01-27 00:00:00</td></tr>
 </tbody>
 </table>
         <details>
@@ -365,22 +365,22 @@ WHERE s.start_dpd <= c.max_d
         <p>该用户跨 <strong>5</strong> 个月、<strong>4</strong> 个阶段，回收 <strong>2</strong> 次。</p>
         <table class="data-table">
 <thead><tr><th>dt_biz_month</th><th>borrower_id</th><th>global_case_id</th><th>owner_name</th><th>case_bucket</th><th>period_seq</th><th>is_assigned</th><th>is_recovered</th><th>repay_principal</th></tr></thead>
-<tbody><tr><td>2025-08</td><td>17,448,800</td><td>202508231958964236097142784</td><td>pom</td><td>S0</td><td>1</td><td>1</td><td>0</td><td>0E-15</td></tr>
-<tr><td>2025-08</td><td>17,448,800</td><td>202508231958964236097142784</td><td>pom</td><td>S1</td><td>1</td><td>1</td><td>0</td><td>0E-15</td></tr>
-<tr><td>2025-08</td><td>17,448,800</td><td>202508271960386494311936000</td><td>pom</td><td>S1</td><td>1</td><td>1</td><td>1</td><td>0E-15</td></tr>
-<tr><td>2025-10</td><td>17,448,800</td><td>202510231981040401624956928</td><td>pom</td><td>S0</td><td>3</td><td>1</td><td>0</td><td>0E-15</td></tr>
-<tr><td>2025-10</td><td>17,448,800</td><td>202510271982492171789926400</td><td>pom</td><td>S1</td><td>3</td><td>1</td><td>0</td><td>0E-15</td></tr>
-<tr><td>2025-10</td><td>17,448,800</td><td>202510231981040401624956928</td><td>pom</td><td>S1</td><td>3</td><td>1</td><td>0</td><td>0E-15</td></tr>
-<tr><td>2025-11</td><td>17,448,800</td><td>202510271982492171789926400</td><td>pom</td><td>S1</td><td>3</td><td>1</td><td>0</td><td>0E-15</td></tr>
-<tr><td>2025-11</td><td>17,448,800</td><td>202510271982492171789926400</td><td>pom</td><td>S1</td><td>3</td><td>1</td><td>0</td><td>0E-15</td></tr>
-<tr><td>2025-11</td><td>17,448,800</td><td>202510271982492171789926400</td><td>pom</td><td>S2</td><td>3</td><td>1</td><td>0</td><td>0E-15</td></tr>
-<tr><td>2025-11</td><td>17,448,800</td><td>202510271982492171789926400</td><td>pom</td><td>M1</td><td>3</td><td>1</td><td>1</td><td>0E-15</td></tr>
-<tr><td>2026-01</td><td>17,448,800</td><td>202601232014372106051444736</td><td>beapa</td><td>S0</td><td>6</td><td>1</td><td>0</td><td>0E-15</td></tr>
-<tr><td>2026-01</td><td>17,448,800</td><td>202601272015829992008716288</td><td>beapa</td><td>S1</td><td>6</td><td>1</td><td>0</td><td>0E-15</td></tr>
-<tr><td>2026-01</td><td>17,448,800</td><td>202601232014372106051444736</td><td>beapa</td><td>S1</td><td>6</td><td>1</td><td>0</td><td>0E-15</td></tr>
-<tr><td>2026-02</td><td>17,448,800</td><td>202601272015829992008716288</td><td>rodriguez03</td><td>S1</td><td>6</td><td>1</td><td>0</td><td>0E-15</td></tr>
-<tr><td>2026-02</td><td>17,448,800</td><td>202601272015829992008716288</td><td>beapa</td><td>S1</td><td>6</td><td>1</td><td>0</td><td>0E-15</td></tr>
-<tr><td>2026-02</td><td>17,448,800</td><td>202601272015829992008716288</td><td>rodriguez03</td><td>S2</td><td>6</td><td>1</td><td>0</td><td>0E-15</td></tr>
+<tbody><tr><td>2025-08</td><td>17,***,800</td><td>202508***142784</td><td>Agent_A</td><td>S0</td><td>1</td><td>1</td><td>0</td><td>0E-15</td></tr>
+<tr><td>2025-08</td><td>17,***,800</td><td>202508***142784</td><td>Agent_A</td><td>S1</td><td>1</td><td>1</td><td>0</td><td>0E-15</td></tr>
+<tr><td>2025-08</td><td>17,***,800</td><td>202508***936000</td><td>Agent_A</td><td>S1</td><td>1</td><td>1</td><td>1</td><td>0E-15</td></tr>
+<tr><td>2025-10</td><td>17,***,800</td><td>202510***956928</td><td>Agent_A</td><td>S0</td><td>3</td><td>1</td><td>0</td><td>0E-15</td></tr>
+<tr><td>2025-10</td><td>17,***,800</td><td>202510***926400</td><td>Agent_A</td><td>S1</td><td>3</td><td>1</td><td>0</td><td>0E-15</td></tr>
+<tr><td>2025-10</td><td>17,***,800</td><td>202510***956928</td><td>Agent_A</td><td>S1</td><td>3</td><td>1</td><td>0</td><td>0E-15</td></tr>
+<tr><td>2025-11</td><td>17,***,800</td><td>202510***926400</td><td>Agent_A</td><td>S1</td><td>3</td><td>1</td><td>0</td><td>0E-15</td></tr>
+<tr><td>2025-11</td><td>17,***,800</td><td>202510***926400</td><td>Agent_A</td><td>S1</td><td>3</td><td>1</td><td>0</td><td>0E-15</td></tr>
+<tr><td>2025-11</td><td>17,***,800</td><td>202510***926400</td><td>Agent_A</td><td>S2</td><td>3</td><td>1</td><td>0</td><td>0E-15</td></tr>
+<tr><td>2025-11</td><td>17,***,800</td><td>202510***926400</td><td>Agent_A</td><td>M1</td><td>3</td><td>1</td><td>1</td><td>0E-15</td></tr>
+<tr><td>2026-01</td><td>17,***,800</td><td>202601***444736</td><td>Agent_C</td><td>S0</td><td>6</td><td>1</td><td>0</td><td>0E-15</td></tr>
+<tr><td>2026-01</td><td>17,***,800</td><td>202601***716288</td><td>Agent_C</td><td>S1</td><td>6</td><td>1</td><td>0</td><td>0E-15</td></tr>
+<tr><td>2026-01</td><td>17,***,800</td><td>202601***444736</td><td>Agent_C</td><td>S1</td><td>6</td><td>1</td><td>0</td><td>0E-15</td></tr>
+<tr><td>2026-02</td><td>17,***,800</td><td>202601***716288</td><td>Agent_D</td><td>S1</td><td>6</td><td>1</td><td>0</td><td>0E-15</td></tr>
+<tr><td>2026-02</td><td>17,***,800</td><td>202601***716288</td><td>Agent_C</td><td>S1</td><td>6</td><td>1</td><td>0</td><td>0E-15</td></tr>
+<tr><td>2026-02</td><td>17,***,800</td><td>202601***716288</td><td>Agent_D</td><td>S2</td><td>6</td><td>1</td><td>0</td><td>0E-15</td></tr>
 </tbody>
 </table></div>
 </details>
@@ -419,12 +419,12 @@ WHERE s.start_dpd <= c.max_d
 <div class="metric-unit">件</div>
 </div>
       <div class="metric-card">
-<div class="metric-value" style="color:#4F81BD">1,747,439</div>
+<div class="metric-value" style="color:#4F81BD">1,4XX,XXX</div>
 <div class="metric-label">原始表回收本金</div>
 <div class="metric-unit">PHP</div>
 </div>
       <div class="metric-card">
-<div class="metric-value" style="color:#4F81BD">1,747,439</div>
+<div class="metric-value" style="color:#4F81BD">1,4XX,XXX</div>
 <div class="metric-label">流转表回收本金</div>
 <div class="metric-unit">PHP</div>
 </div>
@@ -575,7 +575,7 @@ WHERE s.start_dpd <= c.max_d
 <td>95</td>
 <td>29</td>
 <td>30.5%</td>
-<td>26,827</td>
+<td>2X,XXX</td>
 <td><span style="color:#e74c3c">+343.8%</span></td>
 </tr><tr>
 <td>2025-10</td>
@@ -583,7 +583,7 @@ WHERE s.start_dpd <= c.max_d
 <td>226</td>
 <td>48</td>
 <td>21.2%</td>
-<td>131,497</td>
+<td>1XX,XXX</td>
 <td><span style="color:#e74c3c">+78.9%</span></td>
 </tr><tr>
 <td>2025-11</td>
@@ -591,7 +591,7 @@ WHERE s.start_dpd <= c.max_d
 <td>347</td>
 <td>54</td>
 <td>15.6%</td>
-<td>215,416</td>
+<td>1XX,XXX</td>
 <td><span style="color:#e74c3c">+41.7%</span></td>
 </tr><tr>
 <td>2025-12</td>
@@ -599,7 +599,7 @@ WHERE s.start_dpd <= c.max_d
 <td>608</td>
 <td>113</td>
 <td>18.6%</td>
-<td>495,315</td>
+<td>4XX,XXX</td>
 <td><span style="color:#e74c3c">+72.2%</span></td>
 </tr><tr>
 <td>2026-01</td>
@@ -607,7 +607,7 @@ WHERE s.start_dpd <= c.max_d
 <td>778</td>
 <td>155</td>
 <td>19.9%</td>
-<td>636,930</td>
+<td>5XX,XXX</td>
 <td><span style="color:#e74c3c">+30.6%</span></td>
 </tr><tr>
 <td>2026-02</td>
@@ -615,7 +615,7 @@ WHERE s.start_dpd <= c.max_d
 <td>337</td>
 <td>64</td>
 <td>19.0%</td>
-<td>241,454</td>
+<td>2XX,XXX</td>
 <td><span style="color:#e74c3c">-45.4%</span></td>
 </tr></tbody>
     </table>
@@ -695,5 +695,6 @@ WHERE s.start_dpd <= c.max_d
 </div>
 
 </div>
+<script src="/auth-guard.js"></script>
 </body>
 </html>

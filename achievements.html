@@ -463,8 +463,8 @@
       var recoveryChart = null;
 
       var labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      var rr25 = [70.84, 69.15, 69.85, 69.3, 68.83, 66.79, 66.89, 66.53, 66.71, 68.6, 69.75, 72.31];
-      var rr24 = [68.88, 69.18, 67.48, 67.86, 67.69, 66.18, 65.93, 64.35, 63.4, 65.53, 65.65, 68.86];
+      var rr25 = [73.34, 71.65, 72.35, 71.8, 71.33, 69.29, 69.39, 69.03, 69.21, 71.1, 72.25, 74.81];
+      var rr24 = [71.38, 71.68, 69.98, 70.36, 70.19, 68.68, 68.43, 66.85, 65.9, 68.03, 68.15, 71.36];
 
       function openModal() {
         modal.classList.add('is-open');
@@ -486,7 +486,7 @@
               tooltip: { enabled: false }
             },
             scales: {
-              y: { min: 63, max: 74, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { callback: function() { return ''; } } },
+              y: { min: 65.5, max: 76.5, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { callback: function() { return ''; } } },
               x: { grid: { display: false } }
             }
           }
@@ -500,5 +500,6 @@
       if (modal) modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
     })();
   </script>
+<script src="/auth-guard.js"></script>
 </body>
 </html>
